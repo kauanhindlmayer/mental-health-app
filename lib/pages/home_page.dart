@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/emoticon_face.dart';
 import 'package:mentalhealthapp/utils/exercise_tile.dart';
+import 'package:mentalhealthapp/pages/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,41 +11,60 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+
+    if (index == 3) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[800],
-      bottomNavigationBar:
-          BottomNavigationBar(type: BottomNavigationBarType.fixed, items: [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-            color: Colors.grey[400],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.grey[400],
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.apps,
-            color: Colors.grey[400],
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.grid_view_rounded,
+              color: Colors.grey[400],
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.message,
-            color: Colors.grey[400],
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.message,
+              color: Colors.grey[400],
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person,
-            color: Colors.grey[400],
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.exit_to_app,
+              color: Colors.grey[400],
+            ),
+            label: '',
           ),
-          label: '',
-        ),
-      ]),
+        ],
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -57,54 +77,50 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Column(
                 children: [
-                  // Greetings Row
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Hi, Jared!
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Hi, Jared!',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Hi, Jared!',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
                             ),
-                            const SizedBox(
-                              height: 8.0,
-                            ),
-                            Text(
-                              '7 Sep, 2023',
-                              style: TextStyle(color: Colors.blue[200]),
-                            ),
-                          ],
+                          ),
+                          const SizedBox(
+                            height: 8.0,
+                          ),
+                          Text(
+                            '7 Sep, 2023',
+                            style: TextStyle(color: Colors.blue[200]),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(12.0),
                         ),
-
-                        // Notification
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.blue[600],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          padding: const EdgeInsets.all(12.0),
-                          child: const Icon(
-                            Icons.notifications,
-                            color: Colors.white,
-                          ),
-                        )
-                      ]),
-
+                        padding: const EdgeInsets.all(12.0),
+                        child: const Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 25.0,
                   ),
-
-                  // Search Bar
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.blue[600],
-                        borderRadius: BorderRadius.circular(12.0)),
+                      color: Colors.blue[600],
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
                     padding: const EdgeInsets.all(12.0),
                     child: const Row(
                       children: [
@@ -119,12 +135,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-
                   const SizedBox(
                     height: 25.0,
                   ),
-
-                  // How do you feel?
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -138,15 +151,12 @@ class _HomePageState extends State<HomePage> {
                       Icon(
                         Icons.more_horiz,
                         color: Colors.white,
-                      )
+                      ),
                     ],
                   ),
-
                   const SizedBox(
                     height: 25.0,
                   ),
-
-                  // Select you mood
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -158,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Bad', style: TextStyle(color: Colors.white))
+                          Text('Bad', style: TextStyle(color: Colors.white)),
                         ],
                       ),
                       Column(
@@ -169,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Fine', style: TextStyle(color: Colors.white))
+                          Text('Fine', style: TextStyle(color: Colors.white)),
                         ],
                       ),
                       Column(
@@ -180,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Well', style: TextStyle(color: Colors.white))
+                          Text('Well', style: TextStyle(color: Colors.white)),
                         ],
                       ),
                       Column(
@@ -192,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                             height: 8.0,
                           ),
                           Text('Excellent',
-                              style: TextStyle(color: Colors.white))
+                              style: TextStyle(color: Colors.white)),
                         ],
                       ),
                     ],
@@ -214,7 +224,6 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(25.0),
                 child: Column(
                   children: [
-                    // Exercise Heading
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -228,12 +237,9 @@ class _HomePageState extends State<HomePage> {
                         Icon(Icons.more_horiz),
                       ],
                     ),
-
                     const SizedBox(
                       height: 25.0,
                     ),
-
-                    // ListView of Exercises
                     Expanded(
                       child: ListView(
                         children: const [
