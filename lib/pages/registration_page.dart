@@ -1,25 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/home_page.dart';
-import 'package:mentalhealthapp/pages/registration_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mentalhealthapp/pages/login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegistrationPage extends StatelessWidget {
+  const RegistrationPage({Key? key}) : super(key: key);
 
-  void _handleLogin(BuildContext context) {
+  void _handleRegistration(BuildContext context) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
-  }
-
-  void _handleRegister(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const RegistrationPage(),
+        builder: (context) => const LoginPage(),
       ),
     );
   }
@@ -40,7 +29,7 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Login",
+                  "Register",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 40,
@@ -51,7 +40,7 @@ class LoginPage extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  "Welcome Back",
+                  "Create an account",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -112,7 +101,24 @@ class LoginPage extends StatelessWidget {
                               ),
                               child: const TextField(
                                 decoration: InputDecoration(
-                                  hintText: "Email or Phone number",
+                                  hintText: "Full Name",
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.grey[200]!,
+                                  ),
+                                ),
+                              ),
+                              child: const TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Email",
                                   hintStyle: TextStyle(color: Colors.grey),
                                   border: InputBorder.none,
                                 ),
@@ -141,16 +147,9 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      const Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
                       GestureDetector(
                         onTap: () {
-                          _handleLogin(context);
+                          _handleRegistration(context);
                         },
                         child: Container(
                           height: 50,
@@ -161,104 +160,11 @@ class LoginPage extends StatelessWidget {
                           ),
                           child: const Center(
                             child: Text(
-                              "Login",
+                              "Register",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      const Text(
-                        "Continue with social media",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.blue[800],
-                              ),
-                              child: const Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.facebook,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "Facebook",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Expanded(
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.black,
-                              ),
-                              child: const Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    FaIcon(
-                                      FontAwesomeIcons.github,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "GitHub",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(36.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            _handleRegister(
-                              context,
-                            ); // Redirect to registration page
-                          },
-                          child: const Text(
-                            "Don't have an account? Register",
-                            style: TextStyle(
-                              color: Colors.grey, // Underline the text
                             ),
                           ),
                         ),

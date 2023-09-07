@@ -34,30 +34,42 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.grey[400],
+            icon: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.home,
+                color: Colors.grey[400],
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.grid_view_rounded,
-              color: Colors.grey[400],
+            icon: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.grid_view_rounded,
+                color: Colors.grey[400],
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.message,
-              color: Colors.grey[400],
+            icon: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.message,
+                color: Colors.grey[400],
+              ),
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.exit_to_app,
-              color: Colors.grey[400],
+            icon: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.exit_to_app,
+                color: Colors.grey[400],
+              ),
             ),
             label: '',
           ),
@@ -244,22 +256,29 @@ class _HomePageState extends State<HomePage> {
                       child: ListView(
                         children: const [
                           ExerciseTile(
-                            icon: Icons.favorite,
+                            icon: Icons.speaker_notes,
                             color: Colors.orange,
-                            exerciseName: 'Breathing Exercise',
-                            exerciseDuration: '5 min',
+                            exerciseName: 'Speaking Skills',
+                            exerciseDuration: '16 exercises',
+                          ),
+                          ExerciseTile(
+                            icon: Icons.person,
+                            color: Colors.blue,
+                            exerciseName: 'Reading Speed',
+                            exerciseDuration: '6 exercises',
                           ),
                           ExerciseTile(
                             icon: Icons.favorite,
-                            color: Colors.orange,
+                            color: Colors.pink,
                             exerciseName: 'Breathing Exercise',
                             exerciseDuration: '5 min',
                           ),
+                          // Let's make another ExerciseTile
                           ExerciseTile(
-                            icon: Icons.favorite,
-                            color: Colors.orange,
-                            exerciseName: 'Breathing Exercise',
-                            exerciseDuration: '5 min',
+                            icon: Icons.running_with_errors_rounded,
+                            color: Colors.green,
+                            exerciseName: 'Running Exercise',
+                            exerciseDuration: '10 min',
                           ),
                         ],
                       ),
