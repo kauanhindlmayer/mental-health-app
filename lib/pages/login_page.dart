@@ -239,14 +239,12 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.all(36.0),
                         child: GestureDetector(
                           onTap: () {
-                            _handleRegister(
-                              context,
-                            ); // Redirect to registration page
+                            _handleRegister(context);
                           },
                           child: const Text(
                             "Don't have an account? Register",
                             style: TextStyle(
-                              color: Colors.grey, // Underline the text
+                              color: Colors.grey,
                             ),
                           ),
                         ),

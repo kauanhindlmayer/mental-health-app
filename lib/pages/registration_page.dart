@@ -163,6 +163,20 @@ class RegistrationPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(36.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            _handleRegistration(context);
+                          },
+                          child: const Text(
+                            "Already have an account? Login",
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
