@@ -136,7 +136,10 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(12.0),
                     child: const Row(
                       children: [
-                        Icon(Icons.search, color: Colors.white),
+                        Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
                         SizedBox(
                           width: 5.0,
                         ),
@@ -156,9 +159,10 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         'How do you feel?',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Icon(
                         Icons.more_horiz,
@@ -180,7 +184,10 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Bad', style: TextStyle(color: Colors.white)),
+                          Text(
+                            'Bad',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                       Column(
@@ -191,7 +198,10 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Fine', style: TextStyle(color: Colors.white)),
+                          Text(
+                            'Fine',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                       Column(
@@ -202,7 +212,10 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Well', style: TextStyle(color: Colors.white)),
+                          Text(
+                            'Well',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                       Column(
@@ -213,8 +226,10 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 8.0,
                           ),
-                          Text('Excellent',
-                              style: TextStyle(color: Colors.white)),
+                          Text(
+                            'Excellent',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                     ],
@@ -273,7 +288,6 @@ class _HomePageState extends State<HomePage> {
                             exerciseName: 'Breathing Exercise',
                             exerciseDuration: '5 min',
                           ),
-                          // Let's make another ExerciseTile
                           ExerciseTile(
                             icon: Icons.running_with_errors_rounded,
                             color: Colors.green,

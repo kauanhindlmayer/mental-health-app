@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/login_page.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({Key? key}) : super(key: key);
 
   void _handleRegistration(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const LoginPage(),
-      ),
-    );
+    Navigator.pushReplacementNamed(context, '/');
   }
 
   @override

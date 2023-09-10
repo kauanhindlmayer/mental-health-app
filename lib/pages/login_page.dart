@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/home_page.dart';
-import 'package:mentalhealthapp/pages/registration_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   void _handleLogin(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   void _handleRegister(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const RegistrationPage(),
-      ),
-    );
+    Navigator.pushNamed(context, '/register');
   }
 
   @override

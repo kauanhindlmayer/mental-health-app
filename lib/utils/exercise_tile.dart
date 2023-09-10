@@ -64,7 +64,9 @@ class ExerciseTile extends StatelessWidget {
                 ),
               ],
             ),
-            const Icon(Icons.more_horiz),
+            const Icon(
+              Icons.more_horiz,
+            ),
           ],
         ),
       ),
