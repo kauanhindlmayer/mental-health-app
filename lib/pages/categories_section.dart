@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/utils/category.dart';
+import 'package:mentalhealthapp/utils/default_tile.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
@@ -93,9 +95,9 @@ class CategoriesSection extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(25.0),
-              child: const Column(
+              child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -108,8 +110,89 @@ class CategoriesSection extends StatelessWidget {
                       Icon(Icons.more_horiz),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Category(
+                                color: (Colors.purple[800])!,
+                                title: 'Relationship',
+                              ),
+                              const SizedBox(height: 16.0),
+                              Category(
+                                color: (Colors.orange[800])!,
+                                title: 'Education',
+                              ),
+                            ],
+                          ),
+                          const SizedBox(width: 16.0),
+                          Column(
+                            children: [
+                              Category(
+                                color: (Colors.blue[800])!,
+                                title: 'Career',
+                              ),
+                              const SizedBox(
+                                height: 16.0,
+                              ),
+                              Category(
+                                color: (Colors.red[800])!,
+                                title: 'Other',
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Consultant',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Icon(Icons.more_horiz),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  Expanded(
+                    child: ListView(
+                      children: const [
+                        DefaultTile(
+                          icon: Icons.person,
+                          color: Colors.green,
+                          title: 'Bobby Singer',
+                          subTitle: 'Education',
+                        ),
+                        DefaultTile(
+                          icon: Icons.person,
+                          color: Colors.purple,
+                          title: 'Dean Winchester',
+                          subTitle: 'Career',
+                        ),
+                        DefaultTile(
+                          icon: Icons.person,
+                          color: Colors.blue,
+                          title: 'Sam Winchester',
+                          subTitle: 'Relationship',
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

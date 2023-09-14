@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/emoticon_face.dart';
-import 'package:mentalhealthapp/utils/exercise_tile.dart';
+import 'package:mentalhealthapp/utils/default_tile.dart';
 
 class ExercisesSection extends StatelessWidget {
   const ExercisesSection({super.key});
@@ -200,29 +200,29 @@ class ExercisesSection extends StatelessWidget {
                   Expanded(
                     child: ListView(
                       children: const [
-                        ExerciseTile(
+                        DefaultTile(
                           icon: Icons.speaker_notes,
                           color: Colors.orange,
-                          exerciseName: 'Speaking Skills',
-                          exerciseDuration: '16 exercises',
+                          title: 'Speaking Skills',
+                          subTitle: '16 exercises',
                         ),
-                        ExerciseTile(
+                        DefaultTile(
                           icon: Icons.person,
                           color: Colors.blue,
-                          exerciseName: 'Reading Speed',
-                          exerciseDuration: '6 exercises',
+                          title: 'Reading Speed',
+                          subTitle: '6 exercises',
                         ),
-                        ExerciseTile(
+                        DefaultTile(
                           icon: Icons.favorite,
                           color: Colors.pink,
-                          exerciseName: 'Breathing Exercise',
-                          exerciseDuration: '5 min',
+                          title: 'Breathing Exercise',
+                          subTitle: '5 min',
                         ),
-                        ExerciseTile(
+                        DefaultTile(
                           icon: Icons.running_with_errors_rounded,
                           color: Colors.green,
-                          exerciseName: 'Running Exercise',
-                          exerciseDuration: '10 min',
+                          title: 'Running Exercise',
+                          subTitle: '10 min',
                         ),
                       ],
                     ),

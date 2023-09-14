@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/utils/message.dart';
 
 class MessagesSection extends StatelessWidget {
   const MessagesSection({super.key});
@@ -20,15 +21,18 @@ class MessagesSection extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue[600],
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      padding: const EdgeInsets.all(12.0),
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        padding: const EdgeInsets.all(12.0),
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     Column(
@@ -54,15 +58,18 @@ class MessagesSection extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.blue[600],
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      padding: const EdgeInsets.all(12.0),
-                      child: const Icon(
-                        Icons.call,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        padding: const EdgeInsets.all(12.0),
+                        child: const Icon(
+                          Icons.call,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -82,8 +89,15 @@ class MessagesSection extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(25.0),
+              child: ListView(
+                children: const [
+                  Message(isMe: false, text: 'Hi Jason! How are you?'),
+                  Message(isMe: true, text: 'I\'m good, thanks! How are you?'),
+                  Message(isMe: false, text: 'I\'m great. Are you free today?'),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

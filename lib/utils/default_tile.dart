@@ -1,17 +1,17 @@
 import "package:flutter/material.dart";
 
-class ExerciseTile extends StatelessWidget {
+class DefaultTile extends StatelessWidget {
   final icon;
   final color;
-  final String exerciseName;
-  final String exerciseDuration;
+  final String title;
+  final String subTitle;
 
-  const ExerciseTile(
+  const DefaultTile(
       {super.key,
       this.icon,
       this.color,
-      required this.exerciseName,
-      required this.exerciseDuration});
+      required this.title,
+      required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +46,14 @@ class ExerciseTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      exerciseName,
+                      title,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,
                       ),
                     ),
                     Text(
-                      exerciseDuration,
+                      subTitle,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,

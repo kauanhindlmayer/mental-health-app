@@ -10,11 +10,37 @@ class AccountSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          _handleLogout(context);
-        },
-        child: const Center(child: Text("Exit the app")),
+      appBar: AppBar(
+        title: const Text('Account Settings'),
+        backgroundColor: Colors.blue[800],
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16.0),
+        children: [
+          ListTile(
+            title: const Text('Profile'),
+            leading: const Icon(Icons.account_circle),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text('Notifications'),
+            leading: const Icon(Icons.notifications),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text('Privacy'),
+            leading: const Icon(Icons.lock),
+            onTap: () {},
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text('Logout'),
+            leading: const Icon(Icons.exit_to_app),
+            onTap: () {
+              _handleLogout(context);
+            },
+          ),
+        ],
       ),
     );
   }
