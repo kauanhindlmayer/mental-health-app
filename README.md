@@ -1,16 +1,36 @@
-# mentalhealthapp
+# Mental Health App
 
-A new Flutter project.
+## Description
 
-## Getting Started
+The Mental Health App is designed to support users in managing their emotional well-being. It provides a platform for tracking daily emotions, personalized activity recommendations, and progress monitoring.
 
-This project is a starting point for a Flutter application.
+## Table of Contents
 
-A few resources to get you started if this is your first Flutter project:
+- [Requisites](#requisites)
+- [Installation](#installation)
+- [Features](#features)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Requisites
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Before installing the Mental Health App, ensure that you have the following prerequisites:
+
+- [Flutter](https://flutter.dev/): Flutter is the framework used to build the app. Make sure you have Flutter installed on your system. You can follow the installation guide [here](https://flutter.dev/docs/get-started/install).
+
+## Installation
+
+To install the Mental Health App, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/kauanhindlmayer/mental-health-app.git`
+2. Navigate to the project directory: `cd mental-health-app`
+3. Install dependencies: `flutter pub get`
+4. Connect your mobile device or start an emulator.
+5. Run the app on your device: `flutter run`
+
+Now, the Mental Health App should be up and running on your Flutter environment.
+
+## Features
+
+- Emotion tracking with categorization (e.g., "poor," "good," "very good," "excellent").
+- Personalized mental health activity recommendations (e.g., meditation, physical exercises).
+- Educational resources on mental health.
+- Progress tracking over time.
