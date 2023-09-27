@@ -7,7 +7,7 @@ class MessageInputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
+      color: HexColor("#FFFFFF"),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -20,6 +20,15 @@ class MessageInputText extends StatelessWidget {
                     hintText: 'Write a message...',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.0),
+                      borderSide: const BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                    ),
+                    fillColor: HexColor("#F2F7FF"),
+                    filled: true,
+                    suffixIcon: const Icon(
+                      Icons.image_outlined,
                     ),
                   ),
                 ),

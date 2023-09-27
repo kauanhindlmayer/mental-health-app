@@ -27,7 +27,7 @@ class Message extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
           margin: const EdgeInsets.symmetric(vertical: 4.0),
           decoration: BoxDecoration(
-            color: isMe ? HexColor("#267ebd") : HexColor("#E3E9F4"),
+            color: isMe ? HexColor("#267ebd") : HexColor("#F2F7FF"),
             borderRadius: borderRadius,
           ),
           child: Text(

@@ -76,7 +76,9 @@ class ExercisesSection extends StatelessWidget {
                       ),
                       Text(
                         'Search',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -174,7 +176,7 @@ class ExercisesSection extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: HexColor("#FFFFFF"),
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(25.0),
                 ),

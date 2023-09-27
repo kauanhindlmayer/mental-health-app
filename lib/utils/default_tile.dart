@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 class DefaultTile extends StatelessWidget {
   final icon;
@@ -6,12 +6,13 @@ class DefaultTile extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  const DefaultTile(
-      {super.key,
-      this.icon,
-      this.color,
-      required this.title,
-      required this.subTitle});
+  const DefaultTile({
+    super.key,
+    this.icon,
+    this.color,
+    required this.title,
+    required this.subTitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,17 @@ class DefaultTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.0),
+          border: Border.all(
+            color: Colors.grey.withOpacity(0.2),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
