@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class EmoticonFace extends StatelessWidget {
   final String emoticonFace;
@@ -8,7 +9,7 @@ class EmoticonFace extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blue[600],
+        color: HexColor("#408dc5"),
         borderRadius: BorderRadius.circular(12.0),
       ),
       padding: const EdgeInsets.all(12.0),

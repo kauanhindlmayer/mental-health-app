@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/pages/login_page.dart';
 import 'package:mentalhealthapp/pages/home_page.dart';
 import 'package:mentalhealthapp/pages/registration_page.dart';
+import 'package:mentalhealthapp/pages/messages_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
         '/register': (context) => const RegistrationPage(),
+        '/messages': (context) => const MessagesPage(),
       },
     );
   }

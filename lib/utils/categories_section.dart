@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/emoticon_face.dart';
+import 'package:mentalhealthapp/utils/category.dart';
 import 'package:mentalhealthapp/utils/default_tile.dart';
+import 'package:mentalhealthapp/utils/hex_color.dart';
 
-class ExercisesSection extends StatelessWidget {
-  const ExercisesSection({super.key});
+class CategoriesSection extends StatelessWidget {
+  const CategoriesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class ExercisesSection extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.blue[600],
+                        color: HexColor("#408dc5"),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: const EdgeInsets.all(12.0),
@@ -60,7 +61,7 @@ class ExercisesSection extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.blue[600],
+                    color: HexColor("#408dc5"),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(12.0),
@@ -83,92 +84,8 @@ class ExercisesSection extends StatelessWidget {
                 const SizedBox(
                   height: 25.0,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'How do you feel?',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Icon(
-                      Icons.more_horiz,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 25.0,
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        EmoticonFace(
-                          emoticonFace: '😞',
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        Text(
-                          'Bad',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        EmoticonFace(
-                          emoticonFace: '🙂',
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        Text(
-                          'Fine',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        EmoticonFace(
-                          emoticonFace: '😃',
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        Text(
-                          'Well',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        EmoticonFace(
-                          emoticonFace: '🥳',
-                        ),
-                        SizedBox(
-                          height: 8.0,
-                        ),
-                        Text(
-                          'Excellent',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 25.0,
           ),
           Expanded(
             child: Container(
@@ -185,7 +102,64 @@ class ExercisesSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Exercises',
+                        'Category',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Icon(Icons.more_horiz),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Category(
+                                color: (Colors.purple[800])!,
+                                title: 'Relationship',
+                              ),
+                              const SizedBox(height: 16.0),
+                              Category(
+                                color: (Colors.orange[800])!,
+                                title: 'Education',
+                              ),
+                            ],
+                          ),
+                          const SizedBox(width: 16.0),
+                          Column(
+                            children: [
+                              Category(
+                                color: HexColor("#267ebd"),
+                                title: 'Career',
+                              ),
+                              const SizedBox(
+                                height: 16.0,
+                              ),
+                              Category(
+                                color: (Colors.red[800])!,
+                                title: 'Other',
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Consultant',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -201,28 +175,22 @@ class ExercisesSection extends StatelessWidget {
                     child: ListView(
                       children: const [
                         DefaultTile(
-                          icon: Icons.speaker_notes,
-                          color: Colors.orange,
-                          title: 'Speaking Skills',
-                          subTitle: '16 exercises',
+                          icon: Icons.person,
+                          color: Colors.green,
+                          title: 'Bobby Singer',
+                          subTitle: 'Education',
+                        ),
+                        DefaultTile(
+                          icon: Icons.person,
+                          color: Colors.purple,
+                          title: 'Dean Winchester',
+                          subTitle: 'Career',
                         ),
                         DefaultTile(
                           icon: Icons.person,
                           color: Colors.blue,
-                          title: 'Reading Speed',
-                          subTitle: '6 exercises',
-                        ),
-                        DefaultTile(
-                          icon: Icons.favorite,
-                          color: Colors.pink,
-                          title: 'Breathing Exercise',
-                          subTitle: '5 min',
-                        ),
-                        DefaultTile(
-                          icon: Icons.running_with_errors_rounded,
-                          color: Colors.green,
-                          title: 'Running Exercise',
-                          subTitle: '10 min',
+                          title: 'Sam Winchester',
+                          subTitle: 'Relationship',
                         ),
                       ],
                     ),

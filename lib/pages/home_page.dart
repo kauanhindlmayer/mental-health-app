@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/account_section.dart';
-import 'package:mentalhealthapp/pages/categories_section.dart';
-import 'package:mentalhealthapp/pages/exercises_section.dart';
-import 'package:mentalhealthapp/pages/messages_section.dart';
+import 'package:mentalhealthapp/utils/categories_section.dart';
+import 'package:mentalhealthapp/utils/exercises_section.dart';
+import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,23 +13,38 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
+  void _handleRedirectToMessages(BuildContext context) {
+    Navigator.pushNamed(context, '/messages');
+  }
+
+  void _handleLogout(BuildContext context) {
+    Navigator.pushNamed(context, '/');
+  }
+
   final List<Widget> _items = [
     const ExercisesSection(),
     const CategoriesSection(),
-    const MessagesSection(),
-    const AccountSection()
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    switch (index) {
+      case 2:
+        _handleRedirectToMessages(context);
+        break;
+      case 3:
+        _handleLogout(context);
+        break;
+      default:
+        setState(() {
+          _currentIndex = index;
+        });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[800],
+      backgroundColor: HexColor("#267ebd"),
       bottomNavigationBar: SizedBox(
         height: 80.0,
         child: BottomNavigationBar(
@@ -39,28 +53,32 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home_filled,
-                color: _currentIndex == 0 ? Colors.blue[600] : Colors.grey[400],
+                color:
+                    _currentIndex == 0 ? HexColor("#408dc5") : Colors.grey[400],
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.grid_view_rounded,
-                color: _currentIndex == 1 ? Colors.blue[600] : Colors.grey[400],
+                color:
+                    _currentIndex == 1 ? HexColor("#408dc5") : Colors.grey[400],
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.mail,
-                color: _currentIndex == 2 ? Colors.blue[600] : Colors.grey[400],
+                color:
+                    _currentIndex == 2 ? HexColor("#408dc5") : Colors.grey[400],
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.person_sharp,
-                color: _currentIndex == 3 ? Colors.blue[600] : Colors.grey[400],
+                Icons.exit_to_app,
+                color:
+                    _currentIndex == 3 ? HexColor("#408dc5") : Colors.grey[400],
               ),
               label: '',
             ),

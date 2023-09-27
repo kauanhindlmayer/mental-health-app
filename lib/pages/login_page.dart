@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[800],
+      backgroundColor: HexColor("#267ebd"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -145,7 +146,7 @@ class LoginPage extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: Colors.blue[800],
+                            color: HexColor("#267ebd"),
                           ),
                           child: const Center(
                             child: Text(
@@ -175,7 +176,7 @@ class LoginPage extends StatelessWidget {
                               height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Colors.blue[800],
+                                color: HexColor("#267ebd"),
                               ),
                               child: const Center(
                                 child: Row(
