@@ -8,27 +8,22 @@ class Category extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create a pastel shade color by reducing the opacity of the provided color
     Color pastelColor = color.withOpacity(0.8);
 
     return InkWell(
-      onTap: () {
-        // Add your onTap functionality here
-        // This will trigger the ripple effect
-      },
+      onTap: () {},
       child: Container(
         width: 150.0,
         height: 80.0,
         decoration: BoxDecoration(
-          color: pastelColor, // Use the pastel shade color
+          color: pastelColor,
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.white.withOpacity(0.6), // Light effect color
+              color: Colors.white.withOpacity(0.6),
               spreadRadius: 2,
               blurRadius: 5,
-              offset:
-                  const Offset(0, 3), // Adjust the shadow position as needed
+              offset: const Offset(0, 3),
             ),
           ],
         ),
