@@ -26,10 +26,10 @@ class CategoriesSection extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Hi, Jared!',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: HexColor("#FFFFFF"),
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -39,7 +39,9 @@ class CategoriesSection extends StatelessWidget {
                         ),
                         Text(
                           '7 Sep, 2023',
-                          style: TextStyle(color: Colors.blue[200]),
+                          style: TextStyle(
+                            color: HexColor("#65A3D0"),
+                          ),
                         ),
                       ],
                     ),
@@ -49,9 +51,9 @@ class CategoriesSection extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: const EdgeInsets.all(12.0),
-                      child: const Icon(
+                      child: Icon(
                         Icons.notifications,
-                        color: Colors.white,
+                        color: HexColor("#FFFFFF"),
                       ),
                     ),
                   ],
@@ -65,18 +67,20 @@ class CategoriesSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(12.0),
-                  child: const Row(
+                  child: Row(
                     children: [
                       Icon(
                         Icons.search,
-                        color: Colors.white,
+                        color: HexColor("#FFFFFF"),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5.0,
                       ),
                       Text(
                         'Search',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: HexColor("#FFFFFF"),
+                        ),
                       ),
                     ],
                   ),
@@ -122,12 +126,12 @@ class CategoriesSection extends StatelessWidget {
                           Column(
                             children: [
                               Category(
-                                color: (Colors.purple[800])!,
+                                color: HexColor("#9E6AF4"),
                                 title: 'Relationship',
                               ),
                               const SizedBox(height: 16.0),
                               Category(
-                                color: (Colors.orange[800])!,
+                                color: HexColor("#FF9060"),
                                 title: 'Education',
                               ),
                             ],
@@ -143,7 +147,7 @@ class CategoriesSection extends StatelessWidget {
                                 height: 16.0,
                               ),
                               Category(
-                                color: (Colors.red[800])!,
+                                color: HexColor("#EF4F72"),
                                 title: 'Other',
                               ),
                             ],
@@ -165,7 +169,9 @@ class CategoriesSection extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      Icon(Icons.more_horiz),
+                      Icon(
+                        Icons.more_horiz,
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -173,22 +179,22 @@ class CategoriesSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView(
-                      children: const [
+                      children: [
                         DefaultTile(
                           icon: Icons.person,
-                          color: Colors.green,
+                          color: HexColor("78B7A3"),
                           title: 'Bobby Singer',
                           subTitle: 'Education',
                         ),
                         DefaultTile(
                           icon: Icons.person,
-                          color: Colors.purple,
+                          color: HexColor("#B486F8"),
                           title: 'Dean Winchester',
                           subTitle: 'Career',
                         ),
                         DefaultTile(
                           icon: Icons.person,
-                          color: Colors.blue,
+                          color: HexColor("#2C80BF"),
                           title: 'Sam Winchester',
                           subTitle: 'Relationship',
                         ),

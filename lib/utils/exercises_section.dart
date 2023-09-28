@@ -26,10 +26,10 @@ class ExercisesSection extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Hi, Jared!',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: HexColor("#FFFFFF"),
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -39,7 +39,9 @@ class ExercisesSection extends StatelessWidget {
                         ),
                         Text(
                           '7 Sep, 2023',
-                          style: TextStyle(color: Colors.blue[200]),
+                          style: TextStyle(
+                            color: HexColor("#65a3d0"),
+                          ),
                         ),
                       ],
                     ),
@@ -49,9 +51,9 @@ class ExercisesSection extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: const EdgeInsets.all(12.0),
-                      child: const Icon(
+                      child: Icon(
                         Icons.notifications,
-                        color: Colors.white,
+                        color: HexColor("#FFFFFF"),
                       ),
                     ),
                   ],
@@ -65,19 +67,19 @@ class ExercisesSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(12.0),
-                  child: const Row(
+                  child: Row(
                     children: [
                       Icon(
                         Icons.search,
-                        color: Colors.white,
+                        color: HexColor("#FFFFFF"),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5.0,
                       ),
                       Text(
                         'Search',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: HexColor("#FFFFFF"),
                         ),
                       ),
                     ],
@@ -86,82 +88,90 @@ class ExercisesSection extends StatelessWidget {
                 const SizedBox(
                   height: 25.0,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'How do you feel?',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: HexColor("#FFFFFF"),
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Icon(
                       Icons.more_horiz,
-                      color: Colors.white,
+                      color: HexColor("#FFFFFF"),
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 25.0,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
                       children: [
-                        EmoticonFace(
+                        const EmoticonFace(
                           emoticonFace: '😞',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Bad',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: HexColor("#FFFFFF"),
+                          ),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        EmoticonFace(
+                        const EmoticonFace(
                           emoticonFace: '🙂',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Fine',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: HexColor("#FFFFFF"),
+                          ),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        EmoticonFace(
+                        const EmoticonFace(
                           emoticonFace: '😃',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Well',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: HexColor("#FFFFFF"),
+                          ),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        EmoticonFace(
+                        const EmoticonFace(
                           emoticonFace: '🥳',
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Excellent',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: HexColor("#FFFFFF"),
+                          ),
                         ),
                       ],
                     ),
@@ -202,28 +212,28 @@ class ExercisesSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView(
-                      children: const [
+                      children: [
                         DefaultTile(
                           icon: Icons.speaker_notes,
-                          color: Colors.orange,
+                          color: HexColor("#F78556"),
                           title: 'Speaking Skills',
                           subTitle: '16 exercises',
                         ),
                         DefaultTile(
                           icon: Icons.person,
-                          color: Colors.blue,
+                          color: HexColor("#2C80BF"),
                           title: 'Reading Speed',
                           subTitle: '6 exercises',
                         ),
                         DefaultTile(
                           icon: Icons.favorite,
-                          color: Colors.pink,
+                          color: HexColor("#FA5A7D"),
                           title: 'Breathing Exercise',
                           subTitle: '5 min',
                         ),
                         DefaultTile(
                           icon: Icons.running_with_errors_rounded,
-                          color: Colors.green,
+                          color: HexColor("#78B7A3"),
                           title: 'Running Exercise',
                           subTitle: '10 min',
                         ),

@@ -49,9 +49,9 @@ class MessageInput extends StatelessWidget {
                 ),
               ),
               child: IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.mic,
-                  color: Colors.white,
+                  color: HexColor("#FFFFFF"),
                 ),
                 onPressed: () {},
               ),

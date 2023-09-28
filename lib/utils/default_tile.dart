@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class DefaultTile extends StatelessWidget {
   final icon;
@@ -21,14 +22,14 @@ class DefaultTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: HexColor("#FFFFFF"),
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
-            color: Colors.grey.withOpacity(0.2),
+            color: HexColor("#CCCCCC").withOpacity(0.2),
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: HexColor("#CCCCCC").withOpacity(0.2),
               spreadRadius: 1,
               blurRadius: 5,
               offset: const Offset(0, 2),
@@ -47,7 +48,7 @@ class DefaultTile extends StatelessWidget {
                     color: color,
                     child: Icon(
                       icon,
-                      color: Colors.white,
+                      color: HexColor("#FFFFFF"),
                     ),
                   ),
                 ),
@@ -66,9 +67,9 @@ class DefaultTile extends StatelessWidget {
                     ),
                     Text(
                       subTitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                        color: HexColor("#CCCCCC"),
                         fontSize: 14.0,
                       ),
                     ),

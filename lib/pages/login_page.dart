@@ -23,26 +23,26 @@ class LoginPage extends StatelessWidget {
           const SizedBox(
             height: 80,
           ),
-          const Padding(
-            padding: EdgeInsets.all(20),
+          Padding(
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   "Login",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: HexColor("#FFFFFF"),
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Welcome Back",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: HexColor("#FFFFFF"),
                     fontSize: 18,
                   ),
                 ),
@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: HexColor("#FFFFFF"),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(25.0),
                   topRight: Radius.circular(25.0),
@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: HexColor("#FFFFFF"),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -148,11 +148,11 @@ class LoginPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             color: HexColor("#267ebd"),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               "Login",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: HexColor("#FFFFFF"),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -178,21 +178,21 @@ class LoginPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                                 color: HexColor("#267ebd"),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Icon(
                                       Icons.facebook,
-                                      color: Colors.white,
+                                      color: HexColor("#FFFFFF"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "Facebook",
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: HexColor("#FFFFFF"),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -211,21 +211,21 @@ class LoginPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.black,
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     FaIcon(
                                       FontAwesomeIcons.github,
-                                      color: Colors.white,
+                                      color: HexColor("#FFFFFF"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "GitHub",
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: HexColor("#FFFFFF"),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),

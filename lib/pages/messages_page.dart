@@ -39,19 +39,19 @@ class MessagesPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           padding: const EdgeInsets.all(12.0),
-                          child: const Icon(
+                          child: Icon(
                             Icons.arrow_back,
-                            color: Colors.white,
+                            color: HexColor("#FFFFFF"),
                           ),
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             'Bobby Singer',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: HexColor("#FFFFFF"),
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -76,9 +76,9 @@ class MessagesPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           padding: const EdgeInsets.all(12.0),
-                          child: const Icon(
+                          child: Icon(
                             Icons.call,
-                            color: Colors.white,
+                            color: HexColor("#FFFFFF"),
                           ),
                         ),
                       ),

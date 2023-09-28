@@ -48,37 +48,42 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: SizedBox(
         height: 80.0,
         child: BottomNavigationBar(
+          backgroundColor: HexColor("#FFFFFF"),
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home_filled,
-                color:
-                    _currentIndex == 0 ? HexColor("#408dc5") : Colors.grey[400],
+                color: _currentIndex == 0
+                    ? HexColor("#408dc5")
+                    : HexColor("#CBD8F5"),
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.grid_view_rounded,
-                color:
-                    _currentIndex == 1 ? HexColor("#408dc5") : Colors.grey[400],
+                color: _currentIndex == 1
+                    ? HexColor("#408dc5")
+                    : HexColor("#CBD8F5"),
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.mail,
-                color:
-                    _currentIndex == 2 ? HexColor("#408dc5") : Colors.grey[400],
+                color: _currentIndex == 2
+                    ? HexColor("#408dc5")
+                    : HexColor("#CBD8F5"),
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.exit_to_app_outlined,
-                color:
-                    _currentIndex == 3 ? HexColor("#408dc5") : Colors.grey[400],
+                color: _currentIndex == 3
+                    ? HexColor("#408dc5")
+                    : HexColor("#CBD8F5"),
               ),
               label: '',
             ),

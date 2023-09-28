@@ -18,26 +18,26 @@ class RegistrationPage extends StatelessWidget {
           const SizedBox(
             height: 80,
           ),
-          const Padding(
-            padding: EdgeInsets.all(20),
+          Padding(
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   "Register",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: HexColor("#FFFFFF"),
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Create an account",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: HexColor("#FFFFFF"),
                     fontSize: 18,
                   ),
                 ),
@@ -50,7 +50,7 @@ class RegistrationPage extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: HexColor("#FFFFFF"),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(25.0),
                   topRight: Radius.circular(25.0),
@@ -73,7 +73,7 @@ class RegistrationPage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: HexColor("#FFFFFF"),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -153,11 +153,11 @@ class RegistrationPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             color: HexColor("#267ebd"),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               "Register",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: HexColor("#FFFFFF"),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

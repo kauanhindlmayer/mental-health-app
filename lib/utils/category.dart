@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class Category extends StatelessWidget {
   final Color color;
@@ -20,7 +21,7 @@ class Category extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.white.withOpacity(0.6),
+              color: HexColor("#FFFFFF").withOpacity(0.6),
               spreadRadius: 2,
               blurRadius: 5,
               offset: const Offset(0, 3),
@@ -30,8 +31,8 @@ class Category extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: HexColor("#FFFFFF"),
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
             ),
