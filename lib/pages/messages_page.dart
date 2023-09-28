@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 import 'package:mentalhealthapp/utils/message.dart';
-import 'package:mentalhealthapp/utils/message_input_text.dart';
+import 'package:mentalhealthapp/utils/message_input.dart';
 
 class MessagesPage extends StatelessWidget {
   const MessagesPage({super.key});
@@ -129,7 +129,7 @@ class MessagesPage extends StatelessWidget {
                 ),
               ),
             ),
-            const MessageInputText()
+            const MessageInput()
           ],
         ),
       ),

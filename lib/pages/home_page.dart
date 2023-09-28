@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.exit_to_app,
+                Icons.exit_to_app_outlined,
                 color:
                     _currentIndex == 3 ? HexColor("#408dc5") : Colors.grey[400],
               ),

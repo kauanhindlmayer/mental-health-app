@@ -10,10 +10,10 @@ class Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BorderRadius borderRadius = BorderRadius.only(
-      topLeft: const Radius.circular(12.0),
-      topRight: const Radius.circular(12.0),
-      bottomLeft: isMe ? const Radius.circular(12.0) : Radius.zero,
-      bottomRight: isMe ? Radius.zero : const Radius.circular(12.0),
+      topLeft: const Radius.circular(16.0),
+      topRight: const Radius.circular(16.0),
+      bottomLeft: isMe ? const Radius.circular(16.0) : Radius.zero,
+      bottomRight: isMe ? Radius.zero : const Radius.circular(16.0),
     );
 
     return Align(
@@ -24,8 +24,13 @@ class Message extends StatelessWidget {
           vertical: 4.0,
         ),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-          margin: const EdgeInsets.symmetric(vertical: 4.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+            vertical: 20.0,
+          ),
+          margin: const EdgeInsets.symmetric(
+            vertical: 4.0,
+          ),
           decoration: BoxDecoration(
             color: isMe ? HexColor("#267ebd") : HexColor("#F2F7FF"),
             borderRadius: borderRadius,
@@ -33,7 +38,8 @@ class Message extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              color: isMe ? Colors.white : Colors.black,
+              fontWeight: FontWeight.w500,
+              color: isMe ? HexColor("#FFFFFF") : HexColor("#303E65"),
             ),
           ),
         ),

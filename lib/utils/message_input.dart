@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
-class MessageInputText extends StatelessWidget {
-  const MessageInputText({super.key});
+class MessageInput extends StatelessWidget {
+  const MessageInput({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,11 @@ class MessageInputText extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.0,
+                      color: HexColor("#303E65"),
+                    ),
                     hintText: 'Write a message...',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.0),
