@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  void _handleRedirectToMessages(BuildContext context) {
+  void _navigateToMessagesPage(BuildContext context) {
     Navigator.pushNamed(context, '/messages');
   }
 
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   void _onItemTapped(int index) {
     switch (index) {
       case 2:
-        _handleRedirectToMessages(context);
+        _navigateToMessagesPage(context);
         break;
       case 3:
         _handleLogout(context);

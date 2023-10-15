@@ -6,6 +6,10 @@ import 'package:mentalhealthapp/utils/hex_color.dart';
 class ExercisesSection extends StatelessWidget {
   const ExercisesSection({super.key});
 
+  void _navigateToCreateExercisePage(BuildContext context) {
+    Navigator.pushNamed(context, '/create-exercise');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -194,17 +198,22 @@ class ExercisesSection extends StatelessWidget {
               padding: const EdgeInsets.all(25.0),
               child: Column(
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Exercises',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
-                      Icon(Icons.more_horiz),
+                      GestureDetector(
+                        onTap: () {
+                          _navigateToCreateExercisePage(context);
+                        },
+                        child: const Icon(Icons.more_horiz),
+                      ),
                     ],
                   ),
                   const SizedBox(
