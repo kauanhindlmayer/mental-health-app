@@ -4,13 +4,12 @@
 
 The Mental Health App is designed to support users in managing their emotional well-being. It provides a platform for tracking daily emotions, personalized activity recommendations, and progress monitoring.
 
-![Mental Health App](./assets/mental-health-app-dribble.png)
-
 ## Table of Contents
 
 - [Requisites](#requisites)
 - [Installation](#installation)
 - [Features](#features)
+- [Layout Design](#layout-design)
 
 ## Requisites
 
@@ -37,3 +36,9 @@ Now, the Mental Health App should be up and running on your Flutter environment.
 - Educational resources on mental health.
 - Progress tracking over time.
 - Manage personal activities.
+
+## Layout Design
+
+Explore the visual design and user interface of the Mental Health App, crafted by the talented artist Choirul Syafril. Click the image below to view the design:
+
+[![Mental Health App Design](./assets/mental-health-app-dribble.png)](https://dribbble.com/shots/15002657-Mental-Health-App/attachments/6724284?mode=media)
