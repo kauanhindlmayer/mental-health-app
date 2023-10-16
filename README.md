@@ -4,6 +4,8 @@
 
 The Mental Health App is designed to support users in managing their emotional well-being. It provides a platform for tracking daily emotions, personalized activity recommendations, and progress monitoring.
 
+![Mental Health App](./assets/mental-health-app-dribble.png)
+
 ## Table of Contents
 
 - [Requisites](#requisites)
@@ -34,3 +36,4 @@ Now, the Mental Health App should be up and running on your Flutter environment.
 - Personalized mental health activity recommendations (e.g., meditation, physical exercises).
 - Educational resources on mental health.
 - Progress tracking over time.
+- Manage personal activities.
