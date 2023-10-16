@@ -1,12 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class CreateExercisePage extends StatelessWidget {
-  const CreateExercisePage({super.key});
+  CreateExercisePage({super.key});
 
   void _handleRedirectToHome(BuildContext context) {
     Navigator.pushNamed(context, '/home');
   }
+
+  final titleController = TextEditingController();
+  final subtitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,7 @@ class CreateExercisePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Create Exercise',
+                            'Add Exercise',
                             style: TextStyle(
                               color: HexColor("#FFFFFF"),
                               fontSize: 18.0,
@@ -111,8 +115,9 @@ class CreateExercisePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                child: const TextField(
-                                  decoration: InputDecoration(
+                                child: TextField(
+                                  controller: titleController,
+                                  decoration: const InputDecoration(
                                     hintText: "Title",
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none,
@@ -128,8 +133,9 @@ class CreateExercisePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                child: const TextField(
-                                  decoration: InputDecoration(
+                                child: TextField(
+                                  controller: subtitleController,
+                                  decoration: const InputDecoration(
                                     hintText: "Description",
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none,
@@ -144,7 +150,15 @@ class CreateExercisePage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // _handleLogin(context);
+                            final exercise = Exercise(
+                              title: titleController.text,
+                              subtitle: subtitleController.text,
+                              icon: 'person',
+                              color: "#2C80BF",
+                              // createdAt: DateTime.now(),
+                            );
+                            createExercise(exercise);
+                            Navigator.pop(context);
                           },
                           child: Container(
                             height: 50,
@@ -175,4 +189,47 @@ class CreateExercisePage extends StatelessWidget {
       ),
     );
   }
+
+  Future createExercise(Exercise exercise) async {
+    final docExercise =
+        FirebaseFirestore.instance.collection('exercises').doc();
+    exercise.id = docExercise.id;
+    final json = exercise.toJson();
+    await docExercise.set(json);
+  }
+}
+
+class Exercise {
+  String id;
+  final String title;
+  final String subtitle;
+  final String icon;
+  final String color;
+  // final DateTime createdAt;
+
+  Exercise({
+    this.id = '',
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.color,
+    // required this.createdAt,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'title': title,
+        'subtitle': subtitle,
+        'icon': icon,
+        'color': color,
+      };
+
+  static Exercise fromJson(Map<String, dynamic> json) => Exercise(
+        id: json['id'] ?? '',
+        title: json['title'] ?? '',
+        subtitle: json['subtitle'] ?? '',
+        icon: json['icon'] ?? '',
+        color: json['color'] ?? '',
+        // createdAt: (json['createdAt'] as Timestamp).toDate(),
+      );
 }

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/pages/create_exercise_page.dart';
 import 'package:mentalhealthapp/utils/emoticon_face.dart';
 import 'package:mentalhealthapp/utils/default_tile.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
@@ -220,33 +222,25 @@ class ExercisesSection extends StatelessWidget {
                     height: 25.0,
                   ),
                   Expanded(
-                    child: ListView(
-                      children: [
-                        DefaultTile(
-                          icon: Icons.speaker_notes,
-                          color: HexColor("#F78556"),
-                          title: 'Speaking Skills',
-                          subTitle: '16 exercises',
-                        ),
-                        DefaultTile(
-                          icon: Icons.person,
-                          color: HexColor("#2C80BF"),
-                          title: 'Reading Speed',
-                          subTitle: '6 exercises',
-                        ),
-                        DefaultTile(
-                          icon: Icons.favorite,
-                          color: HexColor("#FA5A7D"),
-                          title: 'Breathing Exercise',
-                          subTitle: '5 min',
-                        ),
-                        DefaultTile(
-                          icon: Icons.running_with_errors_rounded,
-                          color: HexColor("#78B7A3"),
-                          title: 'Running Exercise',
-                          subTitle: '10 min',
-                        ),
-                      ],
+                    child: StreamBuilder(
+                      stream: readExercises(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Text(
+                            'Something went wrong! ${snapshot.error}',
+                          );
+                        } else if (snapshot.hasData) {
+                          final exercises = snapshot.data!;
+
+                          return ListView(
+                            children: exercises.map(buildExercise).toList(),
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
                     ),
                   ),
                 ],
@@ -256,5 +250,37 @@ class ExercisesSection extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget buildExercise(Exercise exercise) {
+    IconData iconData = ExerciseIconMapper.getIcon(exercise.icon);
+
+    return DefaultTile(
+      icon: iconData,
+      color: HexColor(exercise.color),
+      title: exercise.title,
+      subTitle: exercise.subtitle,
+    );
+  }
+
+  Stream<List<Exercise>> readExercises() => FirebaseFirestore.instance
+      .collection('exercises')
+      // .orderBy('created_at', descending: true)
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => Exercise.fromJson(doc.data())).toList());
+}
+
+class ExerciseIconMapper {
+  static Map<String, IconData> iconMapping = {
+    'running_with_errors_rounded': Icons.running_with_errors_rounded,
+    'favorite': Icons.favorite,
+    'person': Icons.person,
+    'speaker_notes': Icons.speaker_notes,
+    'fitness_center': Icons.fitness_center,
+  };
+
+  static IconData getIcon(String iconName) {
+    return iconMapping[iconName] ?? Icons.message;
   }
 }
