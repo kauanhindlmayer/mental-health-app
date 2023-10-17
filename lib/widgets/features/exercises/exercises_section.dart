@@ -1,12 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/create_exercise_page.dart';
-import 'package:mentalhealthapp/utils/emoticon_face.dart';
-import 'package:mentalhealthapp/utils/default_tile.dart';
+import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
+import 'package:mentalhealthapp/widgets/features/exercises/emoticon_face.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class ExercisesSection extends StatelessWidget {
-  const ExercisesSection({super.key});
+  ExercisesSection({super.key});
+
+  final exerciseService = ExerciseService();
 
   void _navigateToCreateExercisePage(BuildContext context) {
     Navigator.pushNamed(context, '/create-exercise');
@@ -223,7 +223,7 @@ class ExercisesSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: StreamBuilder(
-                      stream: readExercises(),
+                      stream: exerciseService.readExercises(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) {
                           return Text(
@@ -233,7 +233,9 @@ class ExercisesSection extends StatelessWidget {
                           final exercises = snapshot.data!;
 
                           return ListView(
-                            children: exercises.map(buildExercise).toList(),
+                            children: exercises
+                                .map(exerciseService.buildExercise)
+                                .toList(),
                           );
                         } else {
                           return const Center(
@@ -250,37 +252,5 @@ class ExercisesSection extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Widget buildExercise(Exercise exercise) {
-    IconData iconData = ExerciseIconMapper.getIcon(exercise.icon);
-
-    return DefaultTile(
-      icon: iconData,
-      color: HexColor(exercise.color),
-      title: exercise.title,
-      subTitle: exercise.subtitle,
-    );
-  }
-
-  Stream<List<Exercise>> readExercises() => FirebaseFirestore.instance
-      .collection('exercises')
-      // .orderBy('created_at', descending: true)
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => Exercise.fromJson(doc.data())).toList());
-}
-
-class ExerciseIconMapper {
-  static Map<String, IconData> iconMapping = {
-    'running_with_errors_rounded': Icons.running_with_errors_rounded,
-    'favorite': Icons.favorite,
-    'person': Icons.person,
-    'speaker_notes': Icons.speaker_notes,
-    'fitness_center': Icons.fitness_center,
-  };
-
-  static IconData getIcon(String iconName) {
-    return iconMapping[iconName] ?? Icons.message;
   }
 }

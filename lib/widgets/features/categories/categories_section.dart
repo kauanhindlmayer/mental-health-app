@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/category.dart';
-import 'package:mentalhealthapp/utils/default_tile.dart';
+import 'package:mentalhealthapp/widgets/features/categories/category.dart';
+import 'package:mentalhealthapp/widgets/global/default_tile.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class CategoriesSection extends StatelessWidget {

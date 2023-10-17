@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/categories_section.dart';
-import 'package:mentalhealthapp/utils/exercises_section.dart';
+import 'package:mentalhealthapp/widgets/features/categories/categories_section.dart';
+import 'package:mentalhealthapp/widgets/features/exercises/exercises_section.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _items = [
-    const ExercisesSection(),
+    ExercisesSection(),
     const CategoriesSection(),
   ];
 

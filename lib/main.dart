@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'services/settings/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/pages/login_page.dart';
 import 'package:mentalhealthapp/pages/home_page.dart';

@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
+import 'package:mentalhealthapp/services/models/exercise.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class CreateExercisePage extends StatelessWidget {
@@ -157,7 +158,9 @@ class CreateExercisePage extends StatelessWidget {
                               color: "#2C80BF",
                               // createdAt: DateTime.now(),
                             );
-                            createExercise(exercise);
+
+                            final exerciseService = ExerciseService();
+                            exerciseService.createExercise(exercise);
                             Navigator.pop(context);
                           },
                           child: Container(
@@ -189,47 +192,4 @@ class CreateExercisePage extends StatelessWidget {
       ),
     );
   }
-
-  Future createExercise(Exercise exercise) async {
-    final docExercise =
-        FirebaseFirestore.instance.collection('exercises').doc();
-    exercise.id = docExercise.id;
-    final json = exercise.toJson();
-    await docExercise.set(json);
-  }
-}
-
-class Exercise {
-  String id;
-  final String title;
-  final String subtitle;
-  final String icon;
-  final String color;
-  // final DateTime createdAt;
-
-  Exercise({
-    this.id = '',
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-    required this.color,
-    // required this.createdAt,
-  });
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'subtitle': subtitle,
-        'icon': icon,
-        'color': color,
-      };
-
-  static Exercise fromJson(Map<String, dynamic> json) => Exercise(
-        id: json['id'] ?? '',
-        title: json['title'] ?? '',
-        subtitle: json['subtitle'] ?? '',
-        icon: json['icon'] ?? '',
-        color: json['color'] ?? '',
-        // createdAt: (json['createdAt'] as Timestamp).toDate(),
-      );
 }
