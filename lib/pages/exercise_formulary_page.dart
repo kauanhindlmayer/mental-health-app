@@ -6,20 +6,19 @@ import 'package:mentalhealthapp/utils/hex_color.dart';
 class ExerciseFormularyPage extends StatelessWidget {
   ExerciseFormularyPage({super.key});
 
-  void _handleRedirectToHome(BuildContext context) {
+  void _navigateToHomePage(BuildContext context) {
     Navigator.pushNamed(context, '/home');
   }
 
   final titleController = TextEditingController();
   final subtitleController = TextEditingController();
+  final exerciseService = ExerciseService();
 
   @override
   Widget build(BuildContext context) {
     final exerciseId = ModalRoute.of(context)?.settings.arguments as String?;
 
     if (exerciseId != null) {
-      final exerciseService = ExerciseService();
-
       exerciseService.getExerciseById(exerciseId).then((exercise) {
         titleController.text = exercise.title;
         subtitleController.text = exercise.subtitle;
@@ -45,7 +44,7 @@ class ExerciseFormularyPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          _handleRedirectToHome(context);
+                          _navigateToHomePage(context);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -168,8 +167,6 @@ class ExerciseFormularyPage extends StatelessWidget {
                               icon: 'person',
                               color: "#2C80BF",
                             );
-
-                            final exerciseService = ExerciseService();
 
                             if (exerciseId == null) {
                               exerciseService.createExercise(exercise);
