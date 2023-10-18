@@ -162,6 +162,7 @@ class ConsultantFormularyPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             final consultant = Consultant(
+                              id: '',
                               fullName: titleController.text,
                               categoryName: subtitleController.text,
                               color: "#2C80BF",

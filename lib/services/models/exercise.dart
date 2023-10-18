@@ -1,25 +1,30 @@
-class Exercise {
-  String id;
+import 'package:mentalhealthapp/services/models/base_entity.dart';
+
+class Exercise extends BaseEntity {
   final String title;
   final String subtitle;
   final String icon;
   final String color;
 
   Exercise({
-    this.id = '',
+    required String id,
     required this.title,
     required this.subtitle,
     required this.icon,
     required this.color,
-  });
+  }) : super(id: id);
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'subtitle': subtitle,
-        'icon': icon,
-        'color': color,
-      };
+  @override
+  Map<String, dynamic> toJson() {
+    final map = super.toJson();
+    map.addAll({
+      'title': title,
+      'subtitle': subtitle,
+      'icon': icon,
+      'color': color,
+    });
+    return map;
+  }
 
   static Exercise fromJson(Map<String, dynamic> json) => Exercise(
         id: json['id'] ?? '',

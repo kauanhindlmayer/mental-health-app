@@ -162,6 +162,7 @@ class ExerciseFormularyPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             final exercise = Exercise(
+                              id: '',
                               title: titleController.text,
                               subtitle: subtitleController.text,
                               icon: 'person',
