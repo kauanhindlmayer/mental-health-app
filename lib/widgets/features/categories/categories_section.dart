@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/services/functions/consultant_functions.dart';
 import 'package:mentalhealthapp/widgets/features/categories/category.dart';
-import 'package:mentalhealthapp/widgets/global/default_tile.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
+  CategoriesSection({super.key});
+
+  final consultantService = ConsultantService();
+
+  void _navigateToCreateConsultantPage(BuildContext context) {
+    Navigator.pushNamed(context, '/consultant-formulary');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,18 +165,36 @@ class CategoriesSection extends StatelessWidget {
                   const SizedBox(
                     height: 25.0,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Consultant',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
-                      Icon(
-                        Icons.more_horiz,
+                      PopupMenuButton<String>(
+                        icon: const Icon(Icons.more_horiz),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(6.0),
+                          ),
+                        ),
+                        onSelected: (String choice) {
+                          if (choice == 'Create') {
+                            _navigateToCreateConsultantPage(context);
+                          }
+                        },
+                        itemBuilder: (BuildContext context) {
+                          return ['Create'].map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
                       ),
                     ],
                   ),
@@ -178,33 +202,27 @@ class CategoriesSection extends StatelessWidget {
                     height: 25.0,
                   ),
                   Expanded(
-                    child: ListView(
-                      children: [
-                        DefaultTile(
-                          icon: Icons.person,
-                          color: HexColor("78B7A3"),
-                          title: 'Bobby Singer',
-                          subTitle: 'Education',
-                          actionUpdate: (BuildContext context) {},
-                          actionDelete: () {},
-                        ),
-                        DefaultTile(
-                          icon: Icons.person,
-                          color: HexColor("#B486F8"),
-                          title: 'Dean Winchester',
-                          subTitle: 'Career',
-                          actionUpdate: (BuildContext context) {},
-                          actionDelete: () {},
-                        ),
-                        DefaultTile(
-                          icon: Icons.person,
-                          color: HexColor("#2C80BF"),
-                          title: 'Sam Winchester',
-                          subTitle: 'Relationship',
-                          actionUpdate: (BuildContext context) {},
-                          actionDelete: () {},
-                        ),
-                      ],
+                    child: StreamBuilder(
+                      stream: consultantService.findAll(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Text(
+                            'Something went wrong! ${snapshot.error}',
+                          );
+                        } else if (snapshot.hasData) {
+                          final consultants = snapshot.data!;
+
+                          return ListView(
+                            children: consultants
+                                .map(consultantService.buildConsultant)
+                                .toList(),
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
                     ),
                   ),
                 ],

@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _items = [
     ExercisesSection(),
-    const CategoriesSection(),
+    CategoriesSection(),
   ];
 
   void _onItemTapped(int index) {

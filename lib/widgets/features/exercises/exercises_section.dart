@@ -8,7 +8,7 @@ class ExercisesSection extends StatelessWidget {
 
   final exerciseService = ExerciseService();
 
-  void _navigateToCreateExercisePage(BuildContext context) {
+  void _navigateTocreatePage(BuildContext context) {
     Navigator.pushNamed(context, '/exercise-formulary');
   }
 
@@ -219,7 +219,7 @@ class ExercisesSection extends StatelessWidget {
                         ),
                         onSelected: (String choice) {
                           if (choice == 'Create') {
-                            _navigateToCreateExercisePage(context);
+                            _navigateTocreatePage(context);
                           }
                         },
                         itemBuilder: (BuildContext context) {
@@ -238,7 +238,7 @@ class ExercisesSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: StreamBuilder(
-                      stream: exerciseService.readExercises(),
+                      stream: exerciseService.findAll(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) {
                           return Text(

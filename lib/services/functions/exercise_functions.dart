@@ -5,7 +5,7 @@ import 'package:mentalhealthapp/utils/hex_color.dart';
 import 'package:mentalhealthapp/widgets/global/default_tile.dart';
 
 class ExerciseService {
-  Future createExercise(Exercise exercise) async {
+  Future create(Exercise exercise) async {
     final docExercise =
         FirebaseFirestore.instance.collection('exercises').doc();
     exercise.id = docExercise.id;
@@ -29,7 +29,7 @@ class ExerciseService {
       color: HexColor(exercise.color),
       title: exercise.title,
       subTitle: exercise.subtitle,
-      actionDelete: () => deleteExercise(exercise),
+      actionDelete: () => delete(exercise),
       actionUpdate: (context) => Navigator.pushNamed(
         context,
         '/exercise-formulary',
@@ -38,27 +38,27 @@ class ExerciseService {
     );
   }
 
-  Stream<List<Exercise>> readExercises() => FirebaseFirestore.instance
+  Stream<List<Exercise>> findAll() => FirebaseFirestore.instance
       .collection('exercises')
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => Exercise.fromJson(doc.data())).toList());
 
-  Future deleteExercise(Exercise exercise) async {
+  Future delete(Exercise exercise) async {
     await FirebaseFirestore.instance
         .collection('exercises')
         .doc(exercise.id)
         .delete();
   }
 
-  Future updateExercise(Exercise exercise) async {
+  Future update(Exercise exercise) async {
     await FirebaseFirestore.instance
         .collection('exercises')
         .doc(exercise.id)
         .update(exercise.toJson());
   }
 
-  Future<Exercise> getExerciseById(String id) async {
+  Future<Exercise> findById(String id) async {
     final docExercise =
         await FirebaseFirestore.instance.collection('exercises').doc(id).get();
     return Exercise.fromJson(docExercise.data() ?? {});
