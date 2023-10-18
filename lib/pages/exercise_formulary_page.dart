@@ -3,8 +3,8 @@ import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
 import 'package:mentalhealthapp/services/models/exercise.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
-class CreateExercisePage extends StatelessWidget {
-  CreateExercisePage({super.key});
+class ExerciseFormularyPage extends StatelessWidget {
+  ExerciseFormularyPage({super.key});
 
   void _handleRedirectToHome(BuildContext context) {
     Navigator.pushNamed(context, '/home');

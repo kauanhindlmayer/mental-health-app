@@ -30,8 +30,11 @@ class ExerciseService {
       title: exercise.title,
       subTitle: exercise.subtitle,
       actionDelete: () => deleteExercise(exercise),
-      itemId: exercise.id,
-      redirectToPath: '/create-exercise',
+      actionUpdate: (context) => Navigator.pushNamed(
+        context,
+        '/exercise-formulary',
+        arguments: exercise.id,
+      ),
     );
   }
 

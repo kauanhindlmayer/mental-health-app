@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
-import 'package:mentalhealthapp/widgets/features/exercises/emoticon_face.dart';
+import 'package:mentalhealthapp/widgets/global/emoticon_face.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class ExercisesSection extends StatelessWidget {
@@ -9,7 +9,7 @@ class ExercisesSection extends StatelessWidget {
   final exerciseService = ExerciseService();
 
   void _navigateToCreateExercisePage(BuildContext context) {
-    Navigator.pushNamed(context, '/create-exercise');
+    Navigator.pushNamed(context, '/exercise-formulary');
   }
 
   @override
@@ -210,11 +210,26 @@ class ExercisesSection extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          _navigateToCreateExercisePage(context);
+                      PopupMenuButton<String>(
+                        icon: const Icon(Icons.more_horiz),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(6.0),
+                          ),
+                        ),
+                        onSelected: (String choice) {
+                          if (choice == 'Create') {
+                            _navigateToCreateExercisePage(context);
+                          }
                         },
-                        child: const Icon(Icons.more_horiz),
+                        itemBuilder: (BuildContext context) {
+                          return ['Create'].map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
                       ),
                     ],
                   ),

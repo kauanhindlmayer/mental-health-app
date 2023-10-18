@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class DefaultTile extends StatelessWidget {
-  final icon;
-  final color;
-  final actionDelete;
-  final itemId;
-  final redirectToPath;
+  final IconData icon;
+  final Color color;
+  final Function actionDelete;
+  final Function actionUpdate;
   final String title;
   final String subTitle;
 
   const DefaultTile({
     super.key,
-    this.icon,
-    this.color,
-    this.actionDelete,
-    this.itemId,
-    this.redirectToPath,
+    required this.icon,
+    required this.color,
+    required this.actionDelete,
+    required this.actionUpdate,
     required this.title,
     required this.subTitle,
   });
@@ -85,13 +83,14 @@ class DefaultTile extends StatelessWidget {
             ),
             PopupMenuButton<String>(
               icon: const Icon(Icons.more_horiz),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(6.0),
+                ),
+              ),
               onSelected: (String choice) {
                 if (choice == 'Edit') {
-                  Navigator.pushNamed(
-                    context,
-                    redirectToPath,
-                    arguments: itemId,
-                  );
+                  actionUpdate(context);
                 } else if (choice == 'Delete') {
                   actionDelete();
                 }
