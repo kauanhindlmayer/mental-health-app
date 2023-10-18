@@ -4,7 +4,6 @@ class Exercise {
   final String subtitle;
   final String icon;
   final String color;
-  // final DateTime createdAt;
 
   Exercise({
     this.id = '',
@@ -12,7 +11,6 @@ class Exercise {
     required this.subtitle,
     required this.icon,
     required this.color,
-    // required this.createdAt,
   });
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +27,5 @@ class Exercise {
         subtitle: json['subtitle'] ?? '',
         icon: json['icon'] ?? '',
         color: json['color'] ?? '',
-        // createdAt: (json['createdAt'] as Timestamp).toDate(),
       );
 }

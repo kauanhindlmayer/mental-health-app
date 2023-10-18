@@ -4,6 +4,9 @@ import 'package:mentalhealthapp/utils/hex_color.dart';
 class DefaultTile extends StatelessWidget {
   final icon;
   final color;
+  final actionDelete;
+  final itemId;
+  final redirectToPath;
   final String title;
   final String subTitle;
 
@@ -11,6 +14,9 @@ class DefaultTile extends StatelessWidget {
     super.key,
     this.icon,
     this.color,
+    this.actionDelete,
+    this.itemId,
+    this.redirectToPath,
     required this.title,
     required this.subTitle,
   });
@@ -77,8 +83,27 @@ class DefaultTile extends StatelessWidget {
                 ),
               ],
             ),
-            const Icon(
-              Icons.more_horiz,
+            PopupMenuButton<String>(
+              icon: const Icon(Icons.more_horiz),
+              onSelected: (String choice) {
+                if (choice == 'Edit') {
+                  Navigator.pushNamed(
+                    context,
+                    redirectToPath,
+                    arguments: itemId,
+                  );
+                } else if (choice == 'Delete') {
+                  actionDelete();
+                }
+              },
+              itemBuilder: (BuildContext context) {
+                return ['Edit', 'Delete'].map((String choice) {
+                  return PopupMenuItem<String>(
+                    value: choice,
+                    child: Text(choice),
+                  );
+                }).toList();
+              },
             ),
           ],
         ),

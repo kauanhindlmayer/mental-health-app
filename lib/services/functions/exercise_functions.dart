@@ -5,7 +5,7 @@ import 'package:mentalhealthapp/utils/hex_color.dart';
 import 'package:mentalhealthapp/widgets/global/default_tile.dart';
 
 class ExerciseService {
-  Future<void> createExercise(Exercise exercise) async {
+  Future createExercise(Exercise exercise) async {
     final docExercise =
         FirebaseFirestore.instance.collection('exercises').doc();
     exercise.id = docExercise.id;
@@ -29,6 +29,9 @@ class ExerciseService {
       color: HexColor(exercise.color),
       title: exercise.title,
       subTitle: exercise.subtitle,
+      actionDelete: () => deleteExercise(exercise),
+      itemId: exercise.id,
+      redirectToPath: '/create-exercise',
     );
   }
 
@@ -37,4 +40,24 @@ class ExerciseService {
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => Exercise.fromJson(doc.data())).toList());
+
+  Future deleteExercise(Exercise exercise) async {
+    await FirebaseFirestore.instance
+        .collection('exercises')
+        .doc(exercise.id)
+        .delete();
+  }
+
+  Future updateExercise(Exercise exercise) async {
+    await FirebaseFirestore.instance
+        .collection('exercises')
+        .doc(exercise.id)
+        .update(exercise.toJson());
+  }
+
+  Future<Exercise> getExerciseById(String id) async {
+    final docExercise =
+        await FirebaseFirestore.instance.collection('exercises').doc(id).get();
+    return Exercise.fromJson(docExercise.data() ?? {});
+  }
 }

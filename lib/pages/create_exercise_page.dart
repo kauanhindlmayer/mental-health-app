@@ -15,6 +15,17 @@ class CreateExercisePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final exerciseId = ModalRoute.of(context)?.settings.arguments as String?;
+
+    if (exerciseId != null) {
+      final exerciseService = ExerciseService();
+
+      exerciseService.getExerciseById(exerciseId).then((exercise) {
+        titleController.text = exercise.title;
+        subtitleController.text = exercise.subtitle;
+      });
+    }
+
     return Scaffold(
       backgroundColor: HexColor("#267ebd"),
       body: SafeArea(
@@ -52,7 +63,7 @@ class CreateExercisePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Add Exercise',
+                            '${exerciseId == null ? 'Create' : 'Update'} Exercise',
                             style: TextStyle(
                               color: HexColor("#FFFFFF"),
                               fontSize: 18.0,
@@ -156,11 +167,17 @@ class CreateExercisePage extends StatelessWidget {
                               subtitle: subtitleController.text,
                               icon: 'person',
                               color: "#2C80BF",
-                              // createdAt: DateTime.now(),
                             );
 
                             final exerciseService = ExerciseService();
-                            exerciseService.createExercise(exercise);
+
+                            if (exerciseId == null) {
+                              exerciseService.createExercise(exercise);
+                            } else {
+                              exercise.id = exerciseId;
+                              exerciseService.updateExercise(exercise);
+                            }
+
                             Navigator.pop(context);
                           },
                           child: Container(
@@ -172,7 +189,7 @@ class CreateExercisePage extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                "Create",
+                                exerciseId == null ? 'Create' : 'Update',
                                 style: TextStyle(
                                   color: HexColor("#FFFFFF"),
                                   fontWeight: FontWeight.bold,
