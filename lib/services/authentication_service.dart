@@ -25,10 +25,11 @@ class AuthenticationService {
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(
+      final response = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      print(response);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
