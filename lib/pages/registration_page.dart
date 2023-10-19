@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/services/functions/authentication_functions.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class RegistrationPage extends StatelessWidget {
+class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
 
-  void _handleRegistration(BuildContext context) {
-    Navigator.pushReplacementNamed(context, '/');
+  @override
+  _RegistrationPageState createState() => _RegistrationPageState();
+}
+
+class _RegistrationPageState extends State<RegistrationPage> {
+  bool _loading = false;
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _handleRegistration(BuildContext context) async {
+    if (!_formKey.currentState!.validate()) return;
+
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    setState(() => _loading = true);
+
+    await AuthenticationService().registerWithEmailAndPassword(email, password);
+
+    setState(() => _loading = false);
   }
 
   @override
@@ -83,60 +104,85 @@ class RegistrationPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey[200]!,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Colors.grey[200]!,
+                                    ),
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: _fullNameController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your full name';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Full Name",
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
                                   ),
                                 ),
                               ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Full Name",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Colors.grey[200]!,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey[200]!,
+                                child: TextFormField(
+                                  controller: _emailController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your email';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Email",
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
                                   ),
                                 ),
                               ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Email",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Colors.grey[200]!,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey[200]!,
+                                child: TextFormField(
+                                  controller: _passwordController,
+                                  obscureText: true,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your password';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Password",
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
                                   ),
                                 ),
                               ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Password",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
-                                ),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -153,22 +199,28 @@ class RegistrationPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             color: MyColors.primary_blue,
                           ),
-                          child: const Center(
-                            child: Text(
-                              "Register",
-                              style: TextStyle(
-                                color: MyColors.primary_white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                          child: _loading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: MyColors.primary_white,
+                                  ),
+                                )
+                              : const Center(
+                                  child: Text(
+                                    "Register",
+                                    style: TextStyle(
+                                      color: MyColors.primary_white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(36.0),
                         child: GestureDetector(
                           onTap: () {
-                            _handleRegistration(context);
+                            Navigator.pushNamed(context, '/login');
                           },
                           child: const Text(
                             "Already have an account? Login",

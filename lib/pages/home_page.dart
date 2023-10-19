@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/widgets/features/categories/categories_section.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _handleLogout(BuildContext context) {
-    Navigator.pushNamed(context, '/');
+    FirebaseAuth.instance.signOut();
   }
 
   final List<Widget> _items = [

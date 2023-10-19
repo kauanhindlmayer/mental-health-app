@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mentalhealthapp/services/functions/authentication_functions.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  void _handleLogin(BuildContext context) {
-    Navigator.pushReplacementNamed(context, '/home');
-  }
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
 
-  void _handleRegister(BuildContext context) {
-    Navigator.pushNamed(context, '/register');
+class _LoginPageState extends State<LoginPage> {
+  bool _loading = false;
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _handleLogin(BuildContext context) async {
+    if (!_formKey.currentState!.validate()) return;
+
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    setState(() => _loading = true);
+
+    await AuthenticationService().signInWithEmailAndPassword(email, password);
+
+    setState(() => _loading = false);
   }
 
   @override
@@ -88,51 +104,62 @@ class LoginPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey[200]!,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Colors.grey[200]!,
+                                    ),
+                                  ),
+                                ),
+                                child: TextFormField(
+                                  controller: _emailController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your email';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "Email or Phone number",
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
                                   ),
                                 ),
                               ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Email or Phone number",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Colors.grey[200]!,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey[200]!,
+                                child: TextFormField(
+                                  controller: _passwordController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your password';
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                    hintText: "Password",
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
                                   ),
                                 ),
                               ),
-                              child: const TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Password",
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
-                                ),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      const Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: Colors.grey),
                       ),
                       const SizedBox(
                         height: 40,
@@ -148,15 +175,21 @@ class LoginPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             color: MyColors.primary_blue,
                           ),
-                          child: const Center(
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                color: MyColors.primary_white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                          child: _loading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: MyColors.primary_white,
+                                  ),
+                                )
+                              : const Center(
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                      color: MyColors.primary_white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
                       const SizedBox(
@@ -240,7 +273,7 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.all(36.0),
                         child: GestureDetector(
                           onTap: () {
-                            _handleRegister(context);
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: const Text(
                             "Don't have an account? Register",
