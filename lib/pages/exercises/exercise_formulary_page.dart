@@ -6,22 +6,18 @@ import 'package:mentalhealthapp/utils/colors.dart';
 class ExerciseFormularyPage extends StatelessWidget {
   ExerciseFormularyPage({super.key});
 
-  void _navigateToHomePage(BuildContext context) {
-    Navigator.pushNamed(context, '/home');
-  }
-
-  final titleController = TextEditingController();
-  final subtitleController = TextEditingController();
-  final exerciseService = ExerciseService();
+  final _titleController = TextEditingController();
+  final _subtitleController = TextEditingController();
+  final _exerciseService = ExerciseService();
 
   @override
   Widget build(BuildContext context) {
     final exerciseId = ModalRoute.of(context)?.settings.arguments as String?;
 
     if (exerciseId != null) {
-      exerciseService.findById(exerciseId).then((exercise) {
-        titleController.text = exercise.title;
-        subtitleController.text = exercise.subtitle;
+      _exerciseService.findById(exerciseId).then((exercise) {
+        _titleController.text = exercise.title;
+        _subtitleController.text = exercise.subtitle;
       });
     }
 
@@ -44,7 +40,7 @@ class ExerciseFormularyPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          _navigateToHomePage(context);
+                          Navigator.pushReplacementNamed(context, '/home');
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -127,7 +123,7 @@ class ExerciseFormularyPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: TextField(
-                                  controller: titleController,
+                                  controller: _titleController,
                                   decoration: const InputDecoration(
                                     hintText: "Title",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -145,7 +141,7 @@ class ExerciseFormularyPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: TextField(
-                                  controller: subtitleController,
+                                  controller: _subtitleController,
                                   decoration: const InputDecoration(
                                     hintText: "Description",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -163,17 +159,17 @@ class ExerciseFormularyPage extends StatelessWidget {
                           onTap: () {
                             final exercise = Exercise(
                               id: '',
-                              title: titleController.text,
-                              subtitle: subtitleController.text,
+                              title: _titleController.text,
+                              subtitle: _subtitleController.text,
                               icon: 'person',
                               color: "#2C80BF",
                             );
 
                             if (exerciseId == null) {
-                              exerciseService.create(exercise);
+                              _exerciseService.create(exercise);
                             } else {
                               exercise.id = exerciseId;
-                              exerciseService.update(exercise);
+                              _exerciseService.update(exercise);
                             }
 
                             Navigator.pop(context);

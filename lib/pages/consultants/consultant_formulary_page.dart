@@ -6,22 +6,18 @@ import 'package:mentalhealthapp/utils/colors.dart';
 class ConsultantFormularyPage extends StatelessWidget {
   ConsultantFormularyPage({super.key});
 
-  void _navigateToHomePage(BuildContext context) {
-    Navigator.pushNamed(context, '/home');
-  }
-
-  final titleController = TextEditingController();
-  final subtitleController = TextEditingController();
-  final consultantService = ConsultantService();
+  final _titleController = TextEditingController();
+  final _subtitleController = TextEditingController();
+  final _consultantService = ConsultantService();
 
   @override
   Widget build(BuildContext context) {
     final consultantId = ModalRoute.of(context)?.settings.arguments as String?;
 
     if (consultantId != null) {
-      consultantService.findById(consultantId).then((consultant) {
-        titleController.text = consultant.fullName;
-        subtitleController.text = consultant.categoryName;
+      _consultantService.findById(consultantId).then((consultant) {
+        _titleController.text = consultant.fullName;
+        _subtitleController.text = consultant.categoryName;
       });
     }
 
@@ -44,7 +40,7 @@ class ConsultantFormularyPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          _navigateToHomePage(context);
+                          Navigator.pushReplacementNamed(context, '/home');
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -127,7 +123,7 @@ class ConsultantFormularyPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: TextField(
-                                  controller: titleController,
+                                  controller: _titleController,
                                   decoration: const InputDecoration(
                                     hintText: "Title",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -145,7 +141,7 @@ class ConsultantFormularyPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: TextField(
-                                  controller: subtitleController,
+                                  controller: _subtitleController,
                                   decoration: const InputDecoration(
                                     hintText: "Description",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -163,16 +159,16 @@ class ConsultantFormularyPage extends StatelessWidget {
                           onTap: () {
                             final consultant = Consultant(
                               id: '',
-                              fullName: titleController.text,
-                              categoryName: subtitleController.text,
+                              fullName: _titleController.text,
+                              categoryName: _subtitleController.text,
                               color: "#2C80BF",
                             );
 
                             if (consultantId == null) {
-                              consultantService.create(consultant);
+                              _consultantService.create(consultant);
                             } else {
                               consultant.id = consultantId;
-                              consultantService.update(consultant);
+                              _consultantService.update(consultant);
                             }
 
                             Navigator.pop(context);

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/components/default_tile.dart';
+import 'package:mentalhealthapp/components/custom_tile.dart';
 import 'package:mentalhealthapp/models/exercise.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
@@ -24,7 +24,7 @@ class ExerciseService {
 
     IconData iconData = iconMapping[exercise.icon] ?? Icons.message;
 
-    return DefaultTile(
+    return CustomTile(
       icon: iconData,
       color: HexColor(exercise.color),
       title: exercise.title,

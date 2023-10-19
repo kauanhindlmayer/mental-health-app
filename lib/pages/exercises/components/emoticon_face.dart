@@ -3,6 +3,7 @@ import 'package:mentalhealthapp/utils/colors.dart';
 
 class EmoticonFace extends StatelessWidget {
   final String emoticonFace;
+
   const EmoticonFace({super.key, required this.emoticonFace});
 
   @override

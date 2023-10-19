@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/pages/messages/components/message.dart';
-import 'package:mentalhealthapp/pages/messages/components/message_input.dart';
+import 'package:mentalhealthapp/pages/messages/components/message_input_text.dart';
 
 class MessagesPage extends StatelessWidget {
   const MessagesPage({super.key});
-
-  void _handleRedirectToHome(BuildContext context) {
-    Navigator.pushNamed(context, '/home');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +27,7 @@ class MessagesPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          _handleRedirectToHome(context);
+                          Navigator.pushReplacementNamed(context, '/home');
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -129,7 +125,7 @@ class MessagesPage extends StatelessWidget {
                 ),
               ),
             ),
-            const MessageInput()
+            const MessageInputText()
           ],
         ),
       ),

@@ -6,11 +6,7 @@ import 'package:mentalhealthapp/utils/colors.dart';
 class ExercisesSection extends StatelessWidget {
   ExercisesSection({super.key});
 
-  final exerciseService = ExerciseService();
-
-  void _navigateToCreatePage(BuildContext context) {
-    Navigator.pushNamed(context, '/exercise-formulary');
-  }
+  final _exerciseService = ExerciseService();
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +215,7 @@ class ExercisesSection extends StatelessWidget {
                         ),
                         onSelected: (String choice) {
                           if (choice == 'Create') {
-                            _navigateToCreatePage(context);
+                            Navigator.pushNamed(context, '/exercise-formulary');
                           }
                         },
                         itemBuilder: (BuildContext context) {
@@ -238,7 +234,7 @@ class ExercisesSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: StreamBuilder(
-                      stream: exerciseService.findAll(),
+                      stream: _exerciseService.findAll(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) {
                           return Text(
@@ -249,7 +245,7 @@ class ExercisesSection extends StatelessWidget {
 
                           return ListView(
                             children: exercises
-                                .map(exerciseService.buildExercise)
+                                .map(_exerciseService.buildExercise)
                                 .toList(),
                           );
                         } else {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/pages/authentication/login_page.dart';
 import 'package:mentalhealthapp/pages/authentication/registration_page.dart';
-import 'package:mentalhealthapp/pages/categories/consultant_formulary_page.dart';
+import 'package:mentalhealthapp/pages/consultants/consultant_formulary_page.dart';
 import 'package:mentalhealthapp/pages/exercises/exercise_formulary_page.dart';
 import 'package:mentalhealthapp/pages/home/home_page.dart';
 import 'package:mentalhealthapp/pages/messages/messages_page.dart';

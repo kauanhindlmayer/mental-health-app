@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/categories/categories_section.dart';
+import 'package:mentalhealthapp/pages/consultants/consultants_section.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/pages/exercises/exercises_section.dart';
 
@@ -14,12 +14,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  void _navigateToMessagesPage(BuildContext context) {
-    Navigator.pushNamed(context, '/messages');
-  }
-
   void _handleLogout(BuildContext context) {
     FirebaseAuth.instance.signOut();
+    Navigator.pushNamed(context, '/login');
   }
 
   final List<Widget> _items = [
@@ -30,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   void _onItemTapped(int index) {
     switch (index) {
       case 2:
-        _navigateToMessagesPage(context);
+        Navigator.pushNamed(context, '/messages');
         break;
       case 3:
         _handleLogout(context);

@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/pages/categories/category.dart';
+import 'package:mentalhealthapp/pages/consultants/components/category.dart';
 import 'package:mentalhealthapp/services/consultant_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
 class CategoriesSection extends StatelessWidget {
   CategoriesSection({super.key});
 
-  final consultantService = ConsultantService();
-
-  void _navigateToCreateConsultantPage(BuildContext context) {
-    Navigator.pushNamed(context, '/consultant-formulary');
-  }
+  final _consultantService = ConsultantService();
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +180,10 @@ class CategoriesSection extends StatelessWidget {
                         ),
                         onSelected: (String choice) {
                           if (choice == 'Create') {
-                            _navigateToCreateConsultantPage(context);
+                            Navigator.pushNamed(
+                              context,
+                              '/consultant-formulary',
+                            );
                           }
                         },
                         itemBuilder: (BuildContext context) {
@@ -203,7 +202,7 @@ class CategoriesSection extends StatelessWidget {
                   ),
                   Expanded(
                     child: StreamBuilder(
-                      stream: consultantService.findAll(),
+                      stream: _consultantService.findAll(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) {
                           return Text(
@@ -214,7 +213,7 @@ class CategoriesSection extends StatelessWidget {
 
                           return ListView(
                             children: consultants
-                                .map(consultantService.buildConsultant)
+                                .map(_consultantService.buildConsultant)
                                 .toList(),
                           );
                         } else {

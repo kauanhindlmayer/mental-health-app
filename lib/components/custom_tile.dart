@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class DefaultTile extends StatelessWidget {
+class CustomTile extends StatelessWidget {
   final IconData icon;
   final Color color;
   final Function actionDelete;
@@ -9,7 +9,7 @@ class DefaultTile extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  const DefaultTile({
+  const CustomTile({
     super.key,
     required this.icon,
     required this.color,

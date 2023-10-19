@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class MessageInput extends StatelessWidget {
-  const MessageInput({super.key});
+class MessageInputText extends StatelessWidget {
+  const MessageInputText({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/components/default_tile.dart';
+import 'package:mentalhealthapp/components/custom_tile.dart';
 import 'package:mentalhealthapp/models/consultant.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
 
@@ -14,7 +14,7 @@ class ConsultantService {
   }
 
   Widget buildConsultant(Consultant consultant) {
-    return DefaultTile(
+    return CustomTile(
       icon: Icons.person,
       color: HexColor(consultant.color),
       title: consultant.fullName,
