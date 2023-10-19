@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/functions/consultant_functions.dart';
-import 'package:mentalhealthapp/services/models/consultant.dart';
+import 'package:mentalhealthapp/models/exercise.dart';
+import 'package:mentalhealthapp/services/exercise_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class ConsultantFormularyPage extends StatelessWidget {
-  ConsultantFormularyPage({super.key});
+class ExerciseFormularyPage extends StatelessWidget {
+  ExerciseFormularyPage({super.key});
 
   void _navigateToHomePage(BuildContext context) {
     Navigator.pushNamed(context, '/home');
@@ -12,16 +12,16 @@ class ConsultantFormularyPage extends StatelessWidget {
 
   final titleController = TextEditingController();
   final subtitleController = TextEditingController();
-  final consultantService = ConsultantService();
+  final exerciseService = ExerciseService();
 
   @override
   Widget build(BuildContext context) {
-    final consultantId = ModalRoute.of(context)?.settings.arguments as String?;
+    final exerciseId = ModalRoute.of(context)?.settings.arguments as String?;
 
-    if (consultantId != null) {
-      consultantService.findById(consultantId).then((consultant) {
-        titleController.text = consultant.fullName;
-        subtitleController.text = consultant.categoryName;
+    if (exerciseId != null) {
+      exerciseService.findById(exerciseId).then((exercise) {
+        titleController.text = exercise.title;
+        subtitleController.text = exercise.subtitle;
       });
     }
 
@@ -62,7 +62,7 @@ class ConsultantFormularyPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            '${consultantId == null ? 'Create' : 'Update'} Consultant',
+                            '${exerciseId == null ? 'Create' : 'Update'} Exercise',
                             style: const TextStyle(
                               color: MyColors.primary_white,
                               fontSize: 18.0,
@@ -161,18 +161,19 @@ class ConsultantFormularyPage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            final consultant = Consultant(
+                            final exercise = Exercise(
                               id: '',
-                              fullName: titleController.text,
-                              categoryName: subtitleController.text,
+                              title: titleController.text,
+                              subtitle: subtitleController.text,
+                              icon: 'person',
                               color: "#2C80BF",
                             );
 
-                            if (consultantId == null) {
-                              consultantService.create(consultant);
+                            if (exerciseId == null) {
+                              exerciseService.create(exercise);
                             } else {
-                              consultant.id = consultantId;
-                              consultantService.update(consultant);
+                              exercise.id = exerciseId;
+                              exerciseService.update(exercise);
                             }
 
                             Navigator.pop(context);
@@ -186,7 +187,7 @@ class ConsultantFormularyPage extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                consultantId == null ? 'Create' : 'Update',
+                                exerciseId == null ? 'Create' : 'Update',
                                 style: const TextStyle(
                                   color: MyColors.primary_white,
                                   fontWeight: FontWeight.bold,

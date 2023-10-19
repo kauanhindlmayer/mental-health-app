@@ -1,4 +1,4 @@
-import 'package:mentalhealthapp/services/models/base_entity.dart';
+import 'package:mentalhealthapp/models/base_entity.dart';
 
 class Consultant extends BaseEntity {
   final String fullName;

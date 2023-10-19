@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/functions/authentication_functions.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mentalhealthapp/services/authentication_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _RegistrationPageState createState() => _RegistrationPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _LoginPageState extends State<LoginPage> {
   bool _loading = false;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _handleRegistration(BuildContext context) async {
+  void _handleLogin(BuildContext context) async {
     if (!_formKey.currentState!.validate()) return;
 
     final email = _emailController.text;
@@ -24,7 +24,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
     setState(() => _loading = true);
 
-    await AuthenticationService().registerWithEmailAndPassword(email, password);
+    await AuthenticationService().signInWithEmailAndPassword(email, password);
 
     setState(() => _loading = false);
   }
@@ -45,7 +45,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Register",
+                  "Login",
                   style: TextStyle(
                     color: MyColors.primary_white,
                     fontSize: 40,
@@ -56,7 +56,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   height: 10,
                 ),
                 Text(
-                  "Create an account",
+                  "Welcome Back",
                   style: TextStyle(
                     color: MyColors.primary_white,
                     fontSize: 18,
@@ -118,30 +118,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: _fullNameController,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your full name';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "Full Name",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextFormField(
                                   controller: _emailController,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -150,7 +126,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     return null;
                                   },
                                   decoration: const InputDecoration(
-                                    hintText: "Email",
+                                    hintText: "Email or Phone number",
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none,
                                   ),
@@ -167,13 +143,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 ),
                                 child: TextFormField(
                                   controller: _passwordController,
-                                  obscureText: true,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter your password';
                                     }
                                     return null;
                                   },
+                                  obscureText: true,
                                   decoration: const InputDecoration(
                                     hintText: "Password",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -190,7 +166,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          _handleRegistration(context);
+                          _handleLogin(context);
                         },
                         child: Container(
                           height: 50,
@@ -207,7 +183,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 )
                               : const Center(
                                   child: Text(
-                                    "Register",
+                                    "Login",
                                     style: TextStyle(
                                       color: MyColors.primary_white,
                                       fontWeight: FontWeight.bold,
@@ -216,14 +192,91 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      const Text(
+                        "Continue with social media",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: MyColors.primary_blue,
+                              ),
+                              child: const Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.facebook,
+                                      color: MyColors.primary_white,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "Facebook",
+                                      style: TextStyle(
+                                        color: MyColors.primary_white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: Colors.black,
+                              ),
+                              child: const Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    FaIcon(
+                                      FontAwesomeIcons.github,
+                                      color: MyColors.primary_white,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "GitHub",
+                                      style: TextStyle(
+                                        color: MyColors.primary_white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(36.0),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: const Text(
-                            "Already have an account? Login",
+                            "Don't have an account? Register",
                             style: TextStyle(
                               color: Colors.grey,
                             ),

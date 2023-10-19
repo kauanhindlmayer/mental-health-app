@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
+import 'package:mentalhealthapp/pages/exercises/components/emoticon_face.dart';
+import 'package:mentalhealthapp/services/exercise_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
-import 'package:mentalhealthapp/widgets/global/emoticon_face.dart';
 
 class ExercisesSection extends StatelessWidget {
   ExercisesSection({super.key});
 
   final exerciseService = ExerciseService();
 
-  void _navigateTocreatePage(BuildContext context) {
+  void _navigateToCreatePage(BuildContext context) {
     Navigator.pushNamed(context, '/exercise-formulary');
   }
 
@@ -219,7 +219,7 @@ class ExercisesSection extends StatelessWidget {
                         ),
                         onSelected: (String choice) {
                           if (choice == 'Create') {
-                            _navigateTocreatePage(context);
+                            _navigateToCreatePage(context);
                           }
                         },
                         itemBuilder: (BuildContext context) {

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/models/exercise.dart';
+import 'package:mentalhealthapp/components/default_tile.dart';
+import 'package:mentalhealthapp/models/exercise.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
-import 'package:mentalhealthapp/widgets/global/default_tile.dart';
 
 class ExerciseService {
   Future create(Exercise exercise) async {
@@ -38,18 +38,17 @@ class ExerciseService {
     );
   }
 
+  Future<Exercise> findById(String id) async {
+    final docExercise =
+        await FirebaseFirestore.instance.collection('exercises').doc(id).get();
+    return Exercise.fromJson(docExercise.data() ?? {});
+  }
+
   Stream<List<Exercise>> findAll() => FirebaseFirestore.instance
       .collection('exercises')
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => Exercise.fromJson(doc.data())).toList());
-
-  Future delete(Exercise exercise) async {
-    await FirebaseFirestore.instance
-        .collection('exercises')
-        .doc(exercise.id)
-        .delete();
-  }
 
   Future update(Exercise exercise) async {
     await FirebaseFirestore.instance
@@ -58,9 +57,10 @@ class ExerciseService {
         .update(exercise.toJson());
   }
 
-  Future<Exercise> findById(String id) async {
-    final docExercise =
-        await FirebaseFirestore.instance.collection('exercises').doc(id).get();
-    return Exercise.fromJson(docExercise.data() ?? {});
+  Future delete(Exercise exercise) async {
+    await FirebaseFirestore.instance
+        .collection('exercises')
+        .doc(exercise.id)
+        .delete();
   }
 }

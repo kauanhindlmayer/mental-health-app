@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/functions/consultant_functions.dart';
+import 'package:mentalhealthapp/pages/categories/category.dart';
+import 'package:mentalhealthapp/services/consultant_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
-import 'package:mentalhealthapp/widgets/features/categories/category.dart';
 
 class CategoriesSection extends StatelessWidget {
   CategoriesSection({super.key});

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/models/consultant.dart';
+import 'package:mentalhealthapp/components/default_tile.dart';
+import 'package:mentalhealthapp/models/consultant.dart';
 import 'package:mentalhealthapp/utils/hex_color.dart';
-import 'package:mentalhealthapp/widgets/global/default_tile.dart';
 
 class ConsultantService {
   Future create(Consultant consultant) async {
@@ -28,18 +28,19 @@ class ConsultantService {
     );
   }
 
+  Future<Consultant> findById(String id) async {
+    final docConsultant = await FirebaseFirestore.instance
+        .collection('consultants')
+        .doc(id)
+        .get();
+    return Consultant.fromJson(docConsultant.data() ?? {});
+  }
+
   Stream<List<Consultant>> findAll() => FirebaseFirestore.instance
       .collection('consultants')
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => Consultant.fromJson(doc.data())).toList());
-
-  Future delete(Consultant consultant) async {
-    await FirebaseFirestore.instance
-        .collection('consultants')
-        .doc(consultant.id)
-        .delete();
-  }
 
   Future update(Consultant consultant) async {
     await FirebaseFirestore.instance
@@ -48,11 +49,10 @@ class ConsultantService {
         .update(consultant.toJson());
   }
 
-  Future<Consultant> findById(String id) async {
-    final docConsultant = await FirebaseFirestore.instance
+  Future delete(Consultant consultant) async {
+    await FirebaseFirestore.instance
         .collection('consultants')
-        .doc(id)
-        .get();
-    return Consultant.fromJson(docConsultant.data() ?? {});
+        .doc(consultant.id)
+        .delete();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:mentalhealthapp/services/models/base_entity.dart';
+import 'package:mentalhealthapp/models/base_entity.dart';
 
 class Exercise extends BaseEntity {
   final String title;
