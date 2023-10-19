@@ -11,6 +11,7 @@ class MyColors {
   static const Color primary_gray = Color(0xFFF2F7FF);
   static const Color secondary_gray = Color(0xFFCCCCCC);
   static const Color tertiary_gray = Color(0xFF303E65);
+  static const Color quaternary_gray = Color(0x33CCCCCC);
   static const Color relationship_category = Color(0xFF9E6AF4);
   static const Color education_category = Color(0xFFFF9060);
   static const Color career_category = Color(0xFF267ebd);

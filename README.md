@@ -31,11 +31,11 @@ Now, the Mental Health App should be up and running on your Flutter environment.
 
 ## Features
 
-- Emotion tracking with categorization (e.g., `poor`, `good`, `very good`, `excellent`).
+- Emotion tracking with categorization (e.g., `bad`, `fine`, `well`, `excellent`).
 - Personalized mental health activity recommendations (e.g., meditation, physical exercises).
 - Educational resources on mental health.
-- Progress tracking over time.
 - Manage personal activities.
+- Manage consultants.
 
 ## Layout Design
 

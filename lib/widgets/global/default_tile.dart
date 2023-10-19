@@ -29,14 +29,14 @@ class DefaultTile extends StatelessWidget {
           color: MyColors.primary_white,
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
-            color: MyColors.secondary_gray.withOpacity(0.2),
+            color: MyColors.quaternary_gray,
           ),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
-              color: MyColors.secondary_gray.withOpacity(0.2),
+              color: MyColors.quaternary_gray,
               spreadRadius: 1,
               blurRadius: 5,
-              offset: const Offset(0, 2),
+              offset: Offset(0, 2),
             ),
           ],
         ),
