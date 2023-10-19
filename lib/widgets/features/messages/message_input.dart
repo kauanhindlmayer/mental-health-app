@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 
 class MessageInput extends StatelessWidget {
   const MessageInput({super.key});
@@ -7,7 +7,7 @@ class MessageInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: HexColor("#FFFFFF"),
+      color: MyColors.primary_white,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -17,10 +17,10 @@ class MessageInput extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 8.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 14.0,
-                      color: HexColor("#303E65"),
+                      color: MyColors.tertiary_gray,
                     ),
                     hintText: 'Write a message...',
                     border: OutlineInputBorder(
@@ -30,7 +30,7 @@ class MessageInput extends StatelessWidget {
                         style: BorderStyle.none,
                       ),
                     ),
-                    fillColor: HexColor("#F2F7FF"),
+                    fillColor: MyColors.primary_gray,
                     filled: true,
                     suffixIcon: const Icon(
                       Icons.image_outlined,
@@ -42,16 +42,16 @@ class MessageInput extends StatelessWidget {
             Container(
               width: 55.0,
               height: 55.0,
-              decoration: BoxDecoration(
-                color: HexColor("#267ebd"),
-                borderRadius: const BorderRadius.all(
+              decoration: const BoxDecoration(
+                color: MyColors.primary_blue,
+                borderRadius: BorderRadius.all(
                   Radius.circular(16.0),
                 ),
               ),
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.mic,
-                  color: HexColor("#FFFFFF"),
+                  color: MyColors.primary_white,
                 ),
                 onPressed: () {},
               ),

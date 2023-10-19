@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
 import 'package:mentalhealthapp/services/models/exercise.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 
 class ExerciseFormularyPage extends StatelessWidget {
   ExerciseFormularyPage({super.key});
@@ -26,7 +26,7 @@ class ExerciseFormularyPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: HexColor("#267ebd"),
+      backgroundColor: MyColors.primary_blue,
       body: SafeArea(
         child: Column(
           children: [
@@ -48,13 +48,13 @@ class ExerciseFormularyPage extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: HexColor("#408dc5"),
+                            color: MyColors.secondary_blue,
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           padding: const EdgeInsets.all(12.0),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back,
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ),
@@ -63,8 +63,8 @@ class ExerciseFormularyPage extends StatelessWidget {
                         children: [
                           Text(
                             '${exerciseId == null ? 'Create' : 'Update'} Exercise',
-                            style: TextStyle(
-                              color: HexColor("#FFFFFF"),
+                            style: const TextStyle(
+                              color: MyColors.primary_white,
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -85,7 +85,7 @@ class ExerciseFormularyPage extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: HexColor("#FFFFFF"),
+                  color: MyColors.primary_white,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(25.0),
                     topRight: Radius.circular(25.0),
@@ -105,7 +105,7 @@ class ExerciseFormularyPage extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
@@ -183,13 +183,13 @@ class ExerciseFormularyPage extends StatelessWidget {
                             margin: const EdgeInsets.symmetric(horizontal: 50),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: HexColor("#267ebd"),
+                              color: MyColors.primary_blue,
                             ),
                             child: Center(
                               child: Text(
                                 exerciseId == null ? 'Create' : 'Update',
-                                style: TextStyle(
-                                  color: HexColor("#FFFFFF"),
+                                style: const TextStyle(
+                                  color: MyColors.primary_white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

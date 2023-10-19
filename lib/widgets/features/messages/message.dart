@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 
 class Message extends StatelessWidget {
   final bool isMe;
@@ -32,14 +32,14 @@ class Message extends StatelessWidget {
             vertical: 4.0,
           ),
           decoration: BoxDecoration(
-            color: isMe ? HexColor("#267ebd") : HexColor("#F2F7FF"),
+            color: isMe ? MyColors.primary_blue : MyColors.message_background,
             borderRadius: borderRadius,
           ),
           child: Text(
             text,
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              color: isMe ? HexColor("#FFFFFF") : HexColor("#303E65"),
+              color: isMe ? MyColors.primary_white : MyColors.message_text,
             ),
           ),
         ),

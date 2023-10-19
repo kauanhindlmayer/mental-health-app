@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/services/functions/consultant_functions.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/widgets/features/categories/category.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class CategoriesSection extends StatelessWidget {
   CategoriesSection({super.key});
@@ -29,37 +29,37 @@ class CategoriesSection extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Hi, Jared!',
                           style: TextStyle(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           '7 Sep, 2023',
                           style: TextStyle(
-                            color: HexColor("#65A3D0"),
+                            color: MyColors.tertiary_blue,
                           ),
                         ),
                       ],
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: HexColor("#408dc5"),
+                        color: MyColors.secondary_blue,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: const EdgeInsets.all(12.0),
-                      child: Icon(
+                      child: const Icon(
                         Icons.notifications,
-                        color: HexColor("#FFFFFF"),
+                        color: MyColors.primary_white,
                       ),
                     ),
                   ],
@@ -69,23 +69,23 @@ class CategoriesSection extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: HexColor("#408dc5"),
+                    color: MyColors.secondary_blue,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(12.0),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(
                         Icons.search,
-                        color: HexColor("#FFFFFF"),
+                        color: MyColors.primary_white,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 5.0,
                       ),
                       Text(
                         'Search',
                         style: TextStyle(
-                          color: HexColor("#FFFFFF"),
+                          color: MyColors.primary_white,
                         ),
                       ),
                     ],
@@ -99,9 +99,9 @@ class CategoriesSection extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                color: HexColor("#FFFFFF"),
-                borderRadius: const BorderRadius.vertical(
+              decoration: const BoxDecoration(
+                color: MyColors.primary_white,
+                borderRadius: BorderRadius.vertical(
                   top: Radius.circular(25.0),
                 ),
               ),
@@ -124,7 +124,7 @@ class CategoriesSection extends StatelessWidget {
                   const SizedBox(
                     height: 25.0,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
@@ -132,28 +132,28 @@ class CategoriesSection extends StatelessWidget {
                           Column(
                             children: [
                               Category(
-                                color: HexColor("#9E6AF4"),
+                                color: MyColors.relationship_category,
                                 title: 'Relationship',
                               ),
-                              const SizedBox(height: 16.0),
+                              SizedBox(height: 16.0),
                               Category(
-                                color: HexColor("#FF9060"),
+                                color: MyColors.education_category,
                                 title: 'Education',
                               ),
                             ],
                           ),
-                          const SizedBox(width: 16.0),
+                          SizedBox(width: 16.0),
                           Column(
                             children: [
                               Category(
-                                color: HexColor("#267ebd"),
+                                color: MyColors.career_category,
                                 title: 'Career',
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 16.0,
                               ),
                               Category(
-                                color: HexColor("#EF4F72"),
+                                color: MyColors.other_category,
                                 title: 'Other',
                               ),
                             ],

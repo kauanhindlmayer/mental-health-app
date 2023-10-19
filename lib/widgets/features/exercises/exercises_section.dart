@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/services/functions/exercise_functions.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/widgets/global/emoticon_face.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
 
 class ExercisesSection extends StatelessWidget {
   ExercisesSection({super.key});
@@ -29,37 +29,37 @@ class ExercisesSection extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Hi, Jared!',
                           style: TextStyle(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           '7 Sep, 2023',
                           style: TextStyle(
-                            color: HexColor("#65a3d0"),
+                            color: MyColors.tertiary_blue,
                           ),
                         ),
                       ],
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: HexColor("#408dc5"),
+                        color: MyColors.secondary_blue,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       padding: const EdgeInsets.all(12.0),
-                      child: Icon(
+                      child: const Icon(
                         Icons.notifications,
-                        color: HexColor("#FFFFFF"),
+                        color: MyColors.primary_white,
                       ),
                     ),
                   ],
@@ -69,23 +69,23 @@ class ExercisesSection extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: HexColor("#408dc5"),
+                    color: MyColors.secondary_blue,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(12.0),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(
                         Icons.search,
-                        color: HexColor("#FFFFFF"),
+                        color: MyColors.primary_white,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 5.0,
                       ),
                       Text(
                         'Search',
                         style: TextStyle(
-                          color: HexColor("#FFFFFF"),
+                          color: MyColors.primary_white,
                         ),
                       ),
                     ],
@@ -94,89 +94,89 @@ class ExercisesSection extends StatelessWidget {
                 const SizedBox(
                   height: 25.0,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'How do you feel?',
                       style: TextStyle(
-                        color: HexColor("#FFFFFF"),
+                        color: MyColors.primary_white,
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Icon(
                       Icons.more_horiz,
-                      color: HexColor("#FFFFFF"),
+                      color: MyColors.primary_white,
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 25.0,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
                       children: [
-                        const EmoticonFace(
+                        EmoticonFace(
                           emoticonFace: '😞',
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Bad',
                           style: TextStyle(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        const EmoticonFace(
+                        EmoticonFace(
                           emoticonFace: '🙂',
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Fine',
                           style: TextStyle(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        const EmoticonFace(
+                        EmoticonFace(
                           emoticonFace: '😃',
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Well',
                           style: TextStyle(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        const EmoticonFace(
+                        EmoticonFace(
                           emoticonFace: '🥳',
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           'Excellent',
                           style: TextStyle(
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ],
@@ -191,9 +191,9 @@ class ExercisesSection extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                color: HexColor("#FFFFFF"),
-                borderRadius: const BorderRadius.vertical(
+              decoration: const BoxDecoration(
+                color: MyColors.primary_white,
+                borderRadius: BorderRadius.vertical(
                   top: Radius.circular(25.0),
                 ),
               ),

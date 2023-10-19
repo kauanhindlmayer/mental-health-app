@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/widgets/features/messages/message.dart';
 import 'package:mentalhealthapp/widgets/features/messages/message_input.dart';
 
@@ -13,7 +13,7 @@ class MessagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#267ebd"),
+      backgroundColor: MyColors.primary_blue,
       body: SafeArea(
         child: Column(
           children: [
@@ -35,23 +35,23 @@ class MessagesPage extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: HexColor("#408dc5"),
+                            color: MyColors.secondary_blue,
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           padding: const EdgeInsets.all(12.0),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_back,
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'Bobby Singer',
                             style: TextStyle(
-                              color: HexColor("#FFFFFF"),
+                              color: MyColors.primary_white,
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -72,13 +72,13 @@ class MessagesPage extends StatelessWidget {
                         onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
-                            color: HexColor("#408dc5"),
+                            color: MyColors.secondary_blue,
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           padding: const EdgeInsets.all(12.0),
-                          child: Icon(
+                          child: const Icon(
                             Icons.call,
-                            color: HexColor("#FFFFFF"),
+                            color: MyColors.primary_white,
                           ),
                         ),
                       ),
@@ -92,9 +92,9 @@ class MessagesPage extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
-                  color: HexColor("#FFFFFF"),
-                  borderRadius: const BorderRadius.vertical(
+                decoration: const BoxDecoration(
+                  color: MyColors.primary_white,
+                  borderRadius: BorderRadius.vertical(
                     top: Radius.circular(25.0),
                   ),
                 ),

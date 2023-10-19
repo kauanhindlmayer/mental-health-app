@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,33 +16,33 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#267ebd"),
+      backgroundColor: MyColors.primary_blue,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           const SizedBox(
             height: 80,
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
+          const Padding(
+            padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   "Login",
                   style: TextStyle(
-                    color: HexColor("#FFFFFF"),
+                    color: MyColors.primary_white,
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Welcome Back",
                   style: TextStyle(
-                    color: HexColor("#FFFFFF"),
+                    color: MyColors.primary_white,
                     fontSize: 18,
                   ),
                 ),
@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: HexColor("#FFFFFF"),
+                color: MyColors.primary_white,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(25.0),
                   topRight: Radius.circular(25.0),
@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: HexColor("#FFFFFF"),
+                          color: MyColors.primary_white,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -146,13 +146,13 @@ class LoginPage extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: HexColor("#267ebd"),
+                            color: MyColors.primary_blue,
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Login",
                               style: TextStyle(
-                                color: HexColor("#FFFFFF"),
+                                color: MyColors.primary_white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -176,23 +176,23 @@ class LoginPage extends StatelessWidget {
                               height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: HexColor("#267ebd"),
+                                color: MyColors.primary_blue,
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Icon(
                                       Icons.facebook,
-                                      color: HexColor("#FFFFFF"),
+                                      color: MyColors.primary_white,
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "Facebook",
                                       style: TextStyle(
-                                        color: HexColor("#FFFFFF"),
+                                        color: MyColors.primary_white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -211,21 +211,21 @@ class LoginPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.black,
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     FaIcon(
                                       FontAwesomeIcons.github,
-                                      color: HexColor("#FFFFFF"),
+                                      color: MyColors.primary_white,
                                     ),
-                                    const SizedBox(
+                                    SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "GitHub",
                                       style: TextStyle(
-                                        color: HexColor("#FFFFFF"),
+                                        color: MyColors.primary_white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),

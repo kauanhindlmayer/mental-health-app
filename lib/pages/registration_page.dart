@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/utils/hex_color.dart';
+import 'package:mentalhealthapp/utils/colors.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -11,33 +11,33 @@ class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#267ebd"),
+      backgroundColor: MyColors.primary_blue,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           const SizedBox(
             height: 80,
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
+          const Padding(
+            padding: EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   "Register",
                   style: TextStyle(
-                    color: HexColor("#FFFFFF"),
+                    color: MyColors.primary_white,
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Create an account",
                   style: TextStyle(
-                    color: HexColor("#FFFFFF"),
+                    color: MyColors.primary_white,
                     fontSize: 18,
                   ),
                 ),
@@ -50,7 +50,7 @@ class RegistrationPage extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: HexColor("#FFFFFF"),
+                color: MyColors.primary_white,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(25.0),
                   topRight: Radius.circular(25.0),
@@ -73,7 +73,7 @@ class RegistrationPage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: HexColor("#FFFFFF"),
+                          color: MyColors.primary_white,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -151,13 +151,13 @@ class RegistrationPage extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(horizontal: 50),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: HexColor("#267ebd"),
+                            color: MyColors.primary_blue,
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Register",
                               style: TextStyle(
-                                color: HexColor("#FFFFFF"),
+                                color: MyColors.primary_white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
