@@ -6,7 +6,7 @@ import 'package:mentalhealthapp/pages/authentication/sign_up_page.dart';
 import 'package:mentalhealthapp/pages/consultants/consultant_formulary_page.dart';
 import 'package:mentalhealthapp/pages/exercises/exercise_formulary_page.dart';
 import 'package:mentalhealthapp/pages/home/home_page.dart';
-import 'package:mentalhealthapp/pages/messages/messages_page.dart';
+import 'package:mentalhealthapp/pages/chat/chat_page.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {
@@ -23,7 +23,7 @@ class AppRoutes {
       '/sign-up': (context) => const SignUpPage(),
       '/login': (context) => const LoginPage(),
       '/home': (context) => const HomePage(),
-      '/messages': (context) => const MessagesPage(),
+      '/messages': (context) => const ChatPage(),
       '/exercise-formulary': (context) => ExerciseFormularyPage(),
       '/consultant-formulary': (context) => ConsultantFormularyPage(),
     };

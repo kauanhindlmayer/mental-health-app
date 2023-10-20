@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
-import 'package:mentalhealthapp/pages/messages/components/message.dart';
-import 'package:mentalhealthapp/pages/messages/components/message_input_text.dart';
+import 'package:mentalhealthapp/pages/chat/components/message.dart';
+import 'package:mentalhealthapp/pages/chat/components/message_input.dart';
 
-class MessagesPage extends StatelessWidget {
-  const MessagesPage({super.key});
+class ChatPage extends StatelessWidget {
+  const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class MessagesPage extends StatelessWidget {
                 ),
               ),
             ),
-            const MessageInputText()
+            const MessageInput()
           ],
         ),
       ),
