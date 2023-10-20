@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mentalhealthapp/services/authentication_service.dart';
+import 'package:mentalhealthapp/components/form_container_widget.dart';
+import 'package:mentalhealthapp/services/firebase_auth_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _loading = true);
 
-    await AuthenticationService().signInWithEmailAndPassword(email, password);
+    await FirebaseAuthService().signInWithEmailAndPassword(email, password);
 
     setState(() => _loading = false);
   }
@@ -110,54 +111,26 @@ class _LoginPageState extends State<LoginPage> {
                           key: _formKey,
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextFormField(
-                                  controller: _emailController,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your email';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "Email or Phone number",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
+                              FormContainerWidget(
+                                controller: _emailController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your email';
+                                  }
+                                  return null;
+                                },
+                                hintText: "Email",
                               ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextFormField(
-                                  controller: _passwordController,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your password';
-                                    }
-                                    return null;
-                                  },
-                                  obscureText: true,
-                                  decoration: const InputDecoration(
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
+                              FormContainerWidget(
+                                controller: _passwordController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your password';
+                                  }
+                                  return null;
+                                },
+                                isPasswordField: true,
+                                hintText: "Password",
                               ),
                             ],
                           ),
@@ -275,7 +248,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.all(36.0),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/register');
+                            Navigator.pushNamed(context, '/sign-up');
                           },
                           child: const Text(
                             "Don't have an account? Register",

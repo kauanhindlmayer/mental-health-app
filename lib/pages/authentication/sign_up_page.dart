@@ -1,17 +1,18 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/services/authentication_service.dart';
+import 'package:mentalhealthapp/components/form_container_widget.dart';
+import 'package:mentalhealthapp/services/firebase_auth_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  _RegistrationPageState createState() => _RegistrationPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _SignUpPageState extends State<SignUpPage> {
   bool _loading = false;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
@@ -26,7 +27,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
     setState(() => _loading = true);
 
-    await AuthenticationService().registerWithEmailAndPassword(email, password);
+    await FirebaseAuthService().signUpWithEmailAndPassword(email, password);
 
     setState(() => _loading = false);
   }
@@ -110,78 +111,36 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           key: _formKey,
                           child: Column(
                             children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextFormField(
-                                  controller: _fullNameController,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your full name';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "Full Name",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
+                              FormContainerWidget(
+                                controller: _fullNameController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your full name';
+                                  }
+                                  return null;
+                                },
+                                hintText: "Email",
                               ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextFormField(
-                                  controller: _emailController,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your email';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "Email",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
+                              FormContainerWidget(
+                                controller: _emailController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your email';
+                                  }
+                                  return null;
+                                },
+                                hintText: "Email",
                               ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextFormField(
-                                  controller: _passwordController,
-                                  obscureText: true,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your password';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
+                              FormContainerWidget(
+                                controller: _passwordController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your password';
+                                  }
+                                  return null;
+                                },
+                                isPasswordField: true,
+                                hintText: "Password",
                               ),
                             ],
                           ),

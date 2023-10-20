@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/components/form_container_widget.dart';
 import 'package:mentalhealthapp/models/consultant.dart';
 import 'package:mentalhealthapp/services/consultant_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
@@ -6,6 +7,7 @@ import 'package:mentalhealthapp/utils/colors.dart';
 class ConsultantFormularyPage extends StatelessWidget {
   ConsultantFormularyPage({super.key});
 
+  final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _subtitleController = TextEditingController();
   final _consultantService = ConsultantService();
@@ -111,45 +113,32 @@ class ConsultantFormularyPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextField(
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: <Widget>[
+                                FormContainerWidget(
                                   controller: _titleController,
-                                  decoration: const InputDecoration(
-                                    hintText: "Title",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your title';
+                                    }
+                                    return null;
+                                  },
+                                  hintText: "Title",
                                 ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextField(
+                                FormContainerWidget(
                                   controller: _subtitleController,
-                                  decoration: const InputDecoration(
-                                    hintText: "Description",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your subtitle';
+                                    }
+                                    return null;
+                                  },
+                                  hintText: "Description",
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -157,6 +146,8 @@ class ConsultantFormularyPage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
+                            if (!_formKey.currentState!.validate()) return;
+
                             final consultant = Consultant(
                               id: '',
                               fullName: _titleController.text,

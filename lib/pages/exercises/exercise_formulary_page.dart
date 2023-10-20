@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/components/form_container_widget.dart';
 import 'package:mentalhealthapp/models/exercise.dart';
 import 'package:mentalhealthapp/services/exercise_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
@@ -6,6 +7,7 @@ import 'package:mentalhealthapp/utils/colors.dart';
 class ExerciseFormularyPage extends StatelessWidget {
   ExerciseFormularyPage({super.key});
 
+  final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _subtitleController = TextEditingController();
   final _exerciseService = ExerciseService();
@@ -97,102 +99,92 @@ class ExerciseFormularyPage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(30),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            color: MyColors.primary_white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.blue.withOpacity(0.1),
-                                blurRadius: 20,
-                                offset: const Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextField(
-                                  controller: _titleController,
-                                  decoration: const InputDecoration(
-                                    hintText: "Title",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.grey[200]!,
-                                    ),
-                                  ),
-                                ),
-                                child: TextField(
-                                  controller: _subtitleController,
-                                  decoration: const InputDecoration(
-                                    hintText: "Description",
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            final exercise = Exercise(
-                              id: '',
-                              title: _titleController.text,
-                              subtitle: _subtitleController.text,
-                              icon: 'person',
-                              color: "#2C80BF",
-                            );
-
-                            if (exerciseId == null) {
-                              _exerciseService.create(exercise);
-                            } else {
-                              exercise.id = exerciseId;
-                              _exerciseService.update(exercise);
-                            }
-
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            height: 50,
-                            margin: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: MyColors.primary_blue,
+                              color: MyColors.primary_white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.blue.withOpacity(0.1),
+                                  blurRadius: 20,
+                                  offset: const Offset(0, 10),
+                                ),
+                              ],
                             ),
-                            child: Center(
-                              child: Text(
-                                exerciseId == null ? 'Create' : 'Update',
-                                style: const TextStyle(
-                                  color: MyColors.primary_white,
-                                  fontWeight: FontWeight.bold,
+                            child: Column(
+                              children: <Widget>[
+                                FormContainerWidget(
+                                  controller: _titleController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your title';
+                                    }
+                                    return null;
+                                  },
+                                  hintText: "Title",
+                                ),
+                                FormContainerWidget(
+                                  controller: _subtitleController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your subtitle';
+                                    }
+                                    return null;
+                                  },
+                                  hintText: "Description",
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              if (!_formKey.currentState!.validate()) return;
+
+                              final exercise = Exercise(
+                                id: '',
+                                title: _titleController.text,
+                                subtitle: _subtitleController.text,
+                                icon: 'person',
+                                color: "#2C80BF",
+                              );
+
+                              if (exerciseId == null) {
+                                _exerciseService.create(exercise);
+                              } else {
+                                exercise.id = exerciseId;
+                                _exerciseService.update(exercise);
+                              }
+
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              height: 50,
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: MyColors.primary_blue,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  exerciseId == null ? 'Create' : 'Update',
+                                  style: const TextStyle(
+                                    color: MyColors.primary_white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

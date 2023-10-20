@@ -29,11 +29,11 @@ class CustomTile extends StatelessWidget {
           color: MyColors.primary_white,
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
-            color: MyColors.quaternary_gray,
+            color: MyColors.primary_black,
           ),
           boxShadow: const [
             BoxShadow(
-              color: MyColors.quaternary_gray,
+              color: MyColors.primary_black,
               spreadRadius: 1,
               blurRadius: 5,
               offset: Offset(0, 2),
