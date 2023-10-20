@@ -35,8 +35,6 @@ class _SignUpPageState extends State<SignUpPage> {
         Navigator.pushReplacementNamed(context, '/login');
       } else {
         setState(() => _loading = false);
-        print("TESTETE");
-        print(response);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Something went wrong!"),
