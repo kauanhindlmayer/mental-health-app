@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
 
   void _handleLogout(BuildContext context) {
     FirebaseAuth.instance.signOut();
+    Navigator.pushReplacementNamed(context, '/login');
   }
 
   final List<Widget> _items = [

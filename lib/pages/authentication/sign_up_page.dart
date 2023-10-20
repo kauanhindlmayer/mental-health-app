@@ -179,16 +179,31 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(36.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
-                          child: const Text(
-                            "Already have an account? Login",
-                            style: TextStyle(
-                              color: Colors.grey,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Already have an account?",
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
                             ),
-                          ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/login');
+                              },
+                              child: const Text(
+                                "Login",
+                                style: TextStyle(
+                                  color: MyColors.primary_blue,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ],
