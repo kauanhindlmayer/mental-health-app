@@ -27,9 +27,23 @@ class _SignUpPageState extends State<SignUpPage> {
 
     setState(() => _loading = true);
 
-    await FirebaseAuthService().signUpWithEmailAndPassword(email, password);
-
-    setState(() => _loading = false);
+    await FirebaseAuthService()
+        .signUpWithEmailAndPassword(email, password)
+        .then((response) {
+      if (response != null) {
+        setState(() => _loading = false);
+        Navigator.pushReplacementNamed(context, '/login');
+      } else {
+        setState(() => _loading = false);
+        print("TESTETE");
+        print(response);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Something went wrong!"),
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -119,7 +133,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   }
                                   return null;
                                 },
-                                hintText: "Email",
+                                hintText: "Full Name",
                               ),
                               FormContainerWidget(
                                 controller: _emailController,

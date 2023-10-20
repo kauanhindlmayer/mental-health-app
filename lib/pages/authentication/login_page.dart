@@ -27,9 +27,21 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _loading = true);
 
-    await FirebaseAuthService().signInWithEmailAndPassword(email, password);
-
-    setState(() => _loading = false);
+    await FirebaseAuthService()
+        .signInWithEmailAndPassword(email, password)
+        .then((response) {
+      if (response != null) {
+        setState(() => _loading = false);
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        setState(() => _loading = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Something went wrong!"),
+          ),
+        );
+      }
+    });
   }
 
   @override
