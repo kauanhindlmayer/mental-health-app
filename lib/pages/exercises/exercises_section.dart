@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mentalhealthapp/pages/exercises/components/emoticon_face.dart';
 import 'package:mentalhealthapp/services/exercise_service.dart';
+import 'package:mentalhealthapp/services/firebase_auth_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 
 class ExercisesSection extends StatelessWidget {
   ExercisesSection({super.key});
 
   final _exerciseService = ExerciseService();
+  final displayName = FirebaseAuthService().currentUser?.displayName ?? '';
+  final formattedDate = DateFormat('d MMM, y').format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +29,23 @@ class ExercisesSection extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi, Jared!',
-                          style: TextStyle(
+                          'Hi, $displayName',
+                          style: const TextStyle(
                             color: MyColors.primary_white,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         Text(
-                          '7 Sep, 2023',
-                          style: TextStyle(
+                          formattedDate,
+                          style: const TextStyle(
                             color: MyColors.tertiary_blue,
                           ),
                         ),

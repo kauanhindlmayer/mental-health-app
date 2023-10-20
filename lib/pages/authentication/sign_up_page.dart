@@ -26,12 +26,14 @@ class _SignUpPageState extends State<SignUpPage> {
 
     final email = _emailController.text;
     final password = _passwordController.text;
+    final fullName = _fullNameController.text;
 
     setState(() => _loading = true);
 
     try {
       await FirebaseAuthService()
           .signUpWithEmailAndPassword(email: email, password: password);
+      await FirebaseAuth.instance.currentUser?.updateDisplayName(fullName);
       setState(() => _loading = false);
       Navigator.pushReplacementNamed(context, '/login');
     } on FirebaseAuthException catch (e) {
