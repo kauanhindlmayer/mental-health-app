@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/pages/consultants/consultants_section.dart';
+import 'package:mentalhealthapp/services/firebase_auth_service.dart';
 import 'package:mentalhealthapp/utils/colors.dart';
 import 'package:mentalhealthapp/pages/exercises/exercises_section.dart';
 
@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   void _handleLogout(BuildContext context) {
-    FirebaseAuth.instance.signOut();
+    FirebaseAuthService().signOut();
     Navigator.pushReplacementNamed(context, '/login');
   }
 

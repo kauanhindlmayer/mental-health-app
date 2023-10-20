@@ -1,5 +1,6 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/components/form_container_widget.dart';
 import 'package:mentalhealthapp/services/firebase_auth_service.dart';
@@ -18,8 +19,9 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  String? errorMessage = '';
 
-  void _handleRegistration(BuildContext context) async {
+  void _signUpWithEmailAndPassword(BuildContext context) async {
     if (!_formKey.currentState!.validate()) return;
 
     final email = _emailController.text;
@@ -27,21 +29,28 @@ class _SignUpPageState extends State<SignUpPage> {
 
     setState(() => _loading = true);
 
-    await FirebaseAuthService()
-        .signUpWithEmailAndPassword(email, password)
-        .then((response) {
-      if (response != null) {
-        setState(() => _loading = false);
-        Navigator.pushReplacementNamed(context, '/login');
-      } else {
-        setState(() => _loading = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Something went wrong!"),
-          ),
-        );
-      }
-    });
+    try {
+      await FirebaseAuthService()
+          .signUpWithEmailAndPassword(email: email, password: password);
+      setState(() => _loading = false);
+      Navigator.pushReplacementNamed(context, '/login');
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _loading = false;
+        if (e.code == 'weak-password') {
+          errorMessage = 'The password provided is too weak.';
+        } else if (e.code == 'email-already-in-use') {
+          errorMessage = 'The account already exists for that email.';
+        } else {
+          errorMessage = e.message;
+        }
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage!),
+        ),
+      );
+    }
   }
 
   @override
@@ -163,7 +172,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          _handleRegistration(context);
+                          _signUpWithEmailAndPassword(context);
                         },
                         child: Container(
                           height: 50,

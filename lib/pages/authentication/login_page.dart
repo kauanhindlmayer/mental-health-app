@@ -1,5 +1,6 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mentalhealthapp/components/form_container_widget.dart';
@@ -18,8 +19,9 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  String? errorMessage = '';
 
-  void _handleLogin(BuildContext context) async {
+  void _signInWithEmailAndPassword(BuildContext context) async {
     if (!_formKey.currentState!.validate()) return;
 
     final email = _emailController.text;
@@ -27,21 +29,28 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _loading = true);
 
-    await FirebaseAuthService()
-        .signInWithEmailAndPassword(email, password)
-        .then((response) {
-      if (response != null) {
-        setState(() => _loading = false);
-        Navigator.pushReplacementNamed(context, '/home');
-      } else {
-        setState(() => _loading = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Something went wrong!"),
-          ),
-        );
-      }
-    });
+    try {
+      await FirebaseAuthService()
+          .signInWithEmailAndPassword(email: email, password: password);
+      setState(() => _loading = false);
+      Navigator.pushReplacementNamed(context, '/home');
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        _loading = false;
+        if (e.code == 'user-not-found') {
+          errorMessage = 'No user found for that email.';
+        } else if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+          errorMessage = 'Invalid login credentials.';
+        } else {
+          errorMessage = e.message;
+        }
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage!),
+        ),
+      );
+    }
   }
 
   @override
@@ -153,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          _handleLogin(context);
+                          _signInWithEmailAndPassword(context);
                         },
                         child: Container(
                           height: 50,
