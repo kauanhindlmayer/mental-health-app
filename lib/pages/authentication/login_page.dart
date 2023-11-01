@@ -201,31 +201,36 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         children: <Widget>[
                           Expanded(
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: MyColors.primary_blue,
-                              ),
-                              child: const Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.facebook,
-                                      color: MyColors.primary_white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "Facebook",
-                                      style: TextStyle(
+                            child: GestureDetector(
+                              onTap: () {
+                                FirebaseAuthService().signInWithFacebook();
+                              },
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: MyColors.primary_blue,
+                                ),
+                                child: const Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.facebook,
                                         color: MyColors.primary_white,
-                                        fontWeight: FontWeight.bold,
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Facebook",
+                                        style: TextStyle(
+                                          color: MyColors.primary_white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -234,31 +239,36 @@ class _LoginPageState extends State<LoginPage> {
                             width: 30,
                           ),
                           Expanded(
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.black,
-                              ),
-                              child: const Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    FaIcon(
-                                      FontAwesomeIcons.github,
-                                      color: MyColors.primary_white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "GitHub",
-                                      style: TextStyle(
+                            child: GestureDetector(
+                              onTap: () {
+                                FirebaseAuthService().signInWithGitHub(context);
+                              },
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.black,
+                                ),
+                                child: const Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      FaIcon(
+                                        FontAwesomeIcons.github,
                                         color: MyColors.primary_white,
-                                        fontWeight: FontWeight.bold,
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "GitHub",
+                                        style: TextStyle(
+                                          color: MyColors.primary_white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
