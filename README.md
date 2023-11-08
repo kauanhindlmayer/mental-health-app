@@ -36,6 +36,7 @@ Now, the Mental Health App should be up and running on your Flutter environment.
 - Educational resources on mental health.
 - Manage personal activities.
 - Manage consultants.
+- The complete list of features can be found [here](https://docs.google.com/spreadsheets/d/1O5f4TUlPpoUkylCrCyQKFjp-_aXKwtYn0hLFzWqd_dA/edit?usp=sharing).
 
 ## Layout Design
 
